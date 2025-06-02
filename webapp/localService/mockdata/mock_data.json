@@ -1,0 +1,203 @@
+{
+    "Employee": [
+        {
+            "First Name": "Katherine",
+            "Last Name": "Cabrito",
+            "Employee ID": "000429",
+            "Age": 21,
+            "DateHire": "2023-05-29",
+            "CareerLevel": "12",
+            "CurrentProject": "Shell"
+        },
+        {
+            "First Name": "Ronnalyn",
+            "Last Name": "Reyes",
+            "Employee ID": "000430",
+            "Age": 21,
+            "DateHire": "2024-11-03",
+            "CareerLevel": "12",
+            "CurrentProject": "Shell"
+        },
+        {
+            "First Name": "Jerald",
+            "Last Name": "Chen",
+            "Employee ID": "00431",
+            "Age": 24,
+            "DateHire": "2020-10-10",
+            "CareerLevel": "10",
+            "CurrentProject": "Shell"
+        },
+        {
+            "First Name": "Jeniffer",
+            "Last Name": "Ruiz",
+            "Employee ID": "00432",
+            "Age": 22,
+            "DateHire": "2023-09-26",
+            "CareerLevel": "11",
+            "CurrentProject": "JERA"
+        },
+        {
+            "First Name": "Kenn",
+            "Last Name": "Magbuhat",
+            "Employee ID": "00422",
+            "Age": 33,
+            "DateHire": "2018-03-23",
+            "CareerLevel": "10",
+            "CurrentProject": "First Energy"
+        }
+    ],
+    "ProjectList": [
+        {
+            "ProjectId": "001",
+            "ProjectName": "Shell"
+        },
+        {
+            "ProjectId": "002",
+            "ProjectName": "JERA"
+        },
+        {
+            "ProjectId": "003",
+            "ProjectName": "First Energy"
+        }
+    ],
+    "Skill": [
+        {
+            "EmployeeId": "000429",
+            "SkillId": "001",
+            "ProficiencyID": "001",
+            "SkillName": "SAP ABAP",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "000429",
+            "SkillId": "002",
+            "ProficiencyID": "001",
+            "SkillName": "SAP UI5",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "000429",
+            "SkillId": "003",
+            "ProficiencyID": "002",
+            "SkillName": "SAP Finance",
+            "ProficiencyLevel": "02"
+        },
+        {
+            "EmployeeId": "000430",
+            "SkillId": "001",
+            "ProficiencyID": "001",
+            "SkillName": "SAP ABAP",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "000430",
+            "SkillId": "002",
+            "ProficiencyID": "001",
+            "SkillName": "SAP UI5",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "000430",
+            "SkillId": "004",
+            "ProficiencyID": "002",
+            "SkillName": "SAP HR",
+            "ProficiencyLevel": "02"
+        },
+        {
+            "EmployeeId": "000430",
+            "SkillId": "005",
+            "ProficiencyID": "002",
+            "SkillName": "Workflow",
+            "ProficiencyLevel": "02"
+        },
+        {
+            "EmployeeId": "00431",
+            "SkillId": "001",
+            "ProficiencyID": "001",
+            "SkillName": "SAP ABAP",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "00431",
+            "SkillId": "002",
+            "ProficiencyID": "001",
+            "SkillName": "SAP UI5",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "00431",
+            "SkillId": "003",
+            "ProficiencyID": "001",
+            "SkillName": "SAP Finance",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "00432",
+            "SkillId": "001",
+            "ProficiencyID": "001",
+            "SkillName": "SAP ABAP",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "EmployeeId": "00422",
+            "SkillId": "001",
+            "ProficiencyID": "001",
+            "SkillName": "SAP ABAP",
+            "ProficiencyLevel": "01"
+        }
+    ],
+    "ProficiencyList": [
+        {
+            "ProficiencyId": "001",
+            "ProficiencyLevel": "01"
+        },
+        {
+            "ProficiencyId": "002",
+            "ProficiencyLevel": "02"
+        },
+        {
+            "ProficiencyId": "003",
+            "ProficiencyLevel": "03"
+        }
+    ],
+    "SkillList": [
+        {
+            "SkillId": "001",
+            "SkillName": "SAP ABAP"
+        },
+        {
+            "SkillId": "002",
+            "SkillName": "SAP UI5"
+        },
+        {
+            "SkillId": "003",
+            "SkillName": "SAP Finance"
+        },
+        {
+            "SkillId": "004",
+            "SkillName": "SAP HR"
+        },
+        {
+            "SkillId": "005",
+            "SkillName": "Workflow"
+        }
+    ],
+    "CareerList": [
+        {
+            "CareerId": "12",
+            "CareerLevel": "12"
+        },
+        {
+            "CareerId": "11",
+            "CareerLevel": "11"
+        },
+        {
+            "CareerId": "10",
+            "CareerLevel": "10"
+        },
+        {
+            "CareerId": "9",
+            "CareerLevel": "9"
+        }
+    ]
+}
