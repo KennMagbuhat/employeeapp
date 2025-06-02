@@ -1,6 +1,14 @@
-<mvc:View controllerName="sapips.training.employeeapp.controller.MainView"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" 
+          xmlns="sap.m" 
+          xmlns:form="sap.ui.layout.form"
+          controllerName="sapips.training.employeeapp.controller.MainView">
     <Page id="page" title="{i18n>title}">
+        <Panel id="panelEmployeeDetails" headerText="Employees">
+           <content>
+             <SearchField placeholder="Search for ..." id="fldSearch" width="30%"/>
+             <Button text="Add" id="buttonAdd"/>
+             <Button text="Delete" id="buttonDelete"/>
+           </content>
+        </Panel>
     </Page>
 </mvc:View>
