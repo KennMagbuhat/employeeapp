@@ -14,7 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.17.6",
       "toolsId": "efe9e88a-3328-4c8a-a80d-3a77316c0d34"
-    }
+    },
+    "dataSources": {
+      "mainService": {
+          "uri": "/",
+          "type": "OData",
+          "settings": {
+              "odataVersion": "2.0",
+              "localUri": "localService/metadata.xml"
+          }
+      }
+  }
   },
   "sap.ui": {
     "technology": "UI5",
@@ -51,6 +61,9 @@
         "settings": {
           "bundleName": "sapips.training.employeeapp.i18n.i18n"
         }
+      },
+      "": {
+      "dataSource": "mainService"
       }
     },
     "resources": {

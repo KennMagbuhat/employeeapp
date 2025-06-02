@@ -1,35 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EmployeeList</title>
-    <style>
-        html, body, body > div, #container, #container-uiarea {
-            height: 100%;
-        }
-    </style>
-    <script
-        id="sap-ui-bootstrap"
-        src="resources/mockserver.js"
-        data-sap-ui-theme="sap_horizon"
-        data-sap-ui-resourceroots='{
-            "sapips.training.employeeapp": "./"
+    <title>Mock Server Tutorial</title>
+    <script id="sap-ui-bootstrap"
+        src="resources/sap-ui-core.js"
+        data-sap-ui-resource-roots='{
+            "sap.ui.demo.MockServer": "../"
         }'
-        data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
-        data-sap-ui-compatVersion="edge"
-        data-sap-ui-async="true"
-        data-sap-ui-frameOptions="trusted"
-    ></script>
+        data-sap-ui-on-init="module:sap/ui/core/employeeapp/test/initMockServer"
+        data-sap-ui-compat-version="edge"
+        data-sap-ui-async="true">
+    </script>
 </head>
-<body class="sapUiBody sapUiSizeCompact" id="content">
-    <div
-        data-sap-ui-component
-        data-name="sapips.training.employeeapp"
-        data-id="container"
-        data-settings='{"id" : "sapips.training.employeeapp"}'
-        data-handle-validation="true"
-    ></div>
+<body class="sapUiBody">
+    <div data-sap-ui-component data-name="sap.ui.demo.MockServer" data-id="container" data-settings='{"id" : "MockServer"}'></div>
 </body>
 </html>
