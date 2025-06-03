@@ -1,10 +1,11 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
+    "sap/m/MessageBox",  
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator"
-], (Controller, MessageToast, JSONModel, Filter, FilterOperator) => {
+], (Controller, MessageToast, MessageBox, JSONModel, Filter, FilterOperator) => {
     "use strict";
 
     return Controller.extend("sapips.training.employeeapp.controller.MainView", {
@@ -16,11 +17,45 @@ sap.ui.define([
         onAdd: function () {
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
             MessageToast.show(oBundle.getText("msgAddClicked"));
+
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("add");
         },
-      
+
         onDelete: function () {
-          var oBundle = this.getView().getModel("i18n").getResourceBundle();
-          MessageToast.show(oBundle.getText("msgDeleteClicked"));
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
+            const oTable = this.getView().byId("employeeTable");
+            const oSelectedItems = oTable.getSelectedItems();
+
+            if (oSelectedItems.length === 0) {
+                MessageToast.show(oBundle.getText("msgNoItemSelected"));
+                return;
+            }
+
+            const aSelectedEmployeeIDs = oSelectedItems.map(item => item.getBindingContext().getObject().EmployeeID);
+
+            MessageBox.confirm(
+                oBundle.getText("deleteContent"),
+                {
+                    title: oBundle.getText("deleteTitle"),
+                    onClose: (sAction) => {
+                        if (sAction === MessageBox.Action.OK) {
+                            const oModel = this.getView().getModel();
+                            let aEmployees = oModel.getProperty("/");
+
+                            aEmployees = aEmployees.filter(employee => !aSelectedEmployeeIDs.includes(employee.EmployeeID));
+
+                            oModel.setProperty("/", aEmployees);
+
+                            oTable.removeSelections(true); 
+
+                            MessageToast.show(oBundle.getText("msgDeleteClicked"));
+                        } else {
+                            MessageToast.show(oBundle.getText("msgDeleteCancelled"));
+                        }
+                    }
+                }
+            );
         },
 
         onSearch: function (oEvent) {
@@ -35,7 +70,7 @@ sap.ui.define([
                         operator: sap.ui.model.FilterOperator.Contains,
                         value1: sQuery
                     })
-                    ]);
+                ]);
             }
         }
     });
