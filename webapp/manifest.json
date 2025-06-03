@@ -17,14 +17,14 @@
     },
     "dataSources": {
       "mainService": {
-          "uri": "/",
-          "type": "OData",
-          "settings": {
-              "odataVersion": "2.0",
-              "localUri": "localService/metadata.xml"
-          }
+        "uri": "/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
+        }
       }
-  }
+    }
   },
   "sap.ui": {
     "technology": "UI5",
@@ -63,7 +63,7 @@
         }
       },
       "": {
-      "dataSource": "mainService"
+        "dataSource": "mainService"
       }
     },
     "resources": {
@@ -92,12 +92,23 @@
           "target": [
             "TargetMainView"
           ]
+        },
+        {
+          "name": "RouteAddView",
+          "pattern": "add",
+          "target": [
+            "TargetAddView"
+          ]
         }
       ],
       "targets": {
         "TargetMainView": {
           "id": "MainView",
           "name": "MainView"
+        },
+        "TargetAddView": {
+          "id": "AddView",
+          "name": "AddView"
         }
       }
     },

@@ -1,0 +1,10 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName="sapips.training.employeeapp.controller.AddView">
+    <Page id="addPage" title="Add Employee">
+        <VBox>
+            <Text text="This is the Add Employee Page!" />
+            
+        </VBox>
+    </Page>
+</mvc:View>
