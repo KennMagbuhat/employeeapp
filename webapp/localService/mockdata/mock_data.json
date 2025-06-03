@@ -1,9 +1,9 @@
 {
     "Employee": [
         {
-            "First Name": "Katherine",
-            "Last Name": "Cabrito",
-            "Employee ID": "000429",
+            "FirstName": "Katherine",
+            "LastName": "Cabrito",
+            "EmployeeID": "000429",
             "Age": 21,
             "DateHire": "2023-05-29",
             "CareerLevel": "12",

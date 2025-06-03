@@ -16,7 +16,7 @@
                   </HBox>
               </HBox>
 
-              <Table id="employeeTable" mode="MultiSelect">
+              <Table id="employeeTable" items="{path : '/'}" mode="MultiSelect"  >
                 <columns>
                     <Column id="colEmpId"><Text id="txtHeaderEmpId" text="{i18n>colEmpId}" /></Column>
                     <Column id="colFirstName"><Text id="txtHeaderFirstName" text="{i18n>colFirstName}" /></Column>
@@ -27,6 +27,26 @@
                     <Column id="colProject"><Text id="txtHeaderProject" text="{i18n>colProject}" /></Column>
                     <Column id="colNavButton" width="5rem"><Text id="txtNavButton" text=" " /></Column>
                 </columns>
+
+                <items>
+                    <ColumnListItem id="employeeRow">
+                        <cells>
+                            <Text id="cellEmpId" text="{EmployeeID}" />
+                            <Text id="cellFirstName" text="{FirstName}" />
+                            <Text id="cellLastName" text="{LastName}" />
+                            <Text id="cellAge" text="{Age}" />
+                            <Text id="cellHireDate" text="{DateHire}" />
+                            <Text id="cellCareerLevel" text="{CareerLevel}" />
+                            <Text id="cellProject" text="{CurrentProject}" />
+                            <Button id="bView"
+                                icon="sap-icon://navigation-right-arrow"
+                                press=".onEmployeeDetailPress"
+                                tooltip="{i18n>btnViewDetailsTooltip}"
+                                type="Transparent" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
               </Table>
 
            </VBox>
