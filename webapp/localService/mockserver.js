@@ -16,18 +16,6 @@ sap.ui.define([
             });
             oMockServer.start();
             jQuery.sap.log.info("Mock server started");
-
-            // var oUriParameters = jQuery.sap.getUriParameters();
-            // MockServer.config({
-            //     autoRespond: true,
-            //     autoRespondAfter: oUriParameters.get("serverDelay") || 999
-            // });
-
-            // var sPath = jQuery.sap.getModulePath("localservice");
-            // oMockServer.simulate(sPath + "/metadata.xml", sPath + "/mockdata/mock_data.json");
-
-            // oMockServer.start();
-            // jQuery.sap.log.info("Mock server started");
             
         }
     };

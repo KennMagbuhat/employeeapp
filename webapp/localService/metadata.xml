@@ -3,11 +3,11 @@
     <Schema Namespace="SAP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <EntityType Name="Employee">
         <Key>
-          <PropertyRef Name="FirstName" />
+          <PropertyRef Name="EmployeeID" />
         </Key>
-        <Property Name="FirstName" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="EmployeeID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="FirstName" Type="Edm.String" MaxLength="40" Nullable="true"/>
         <Property Name="LastName" Type="Edm.String" MaxLength="40" Nullable="true"/>
-        <Property Name="EmployeeID" Type="Edm.String" MaxLength="40" Nullable="true"/>
         <Property Name="Age" Type="Edm.Int16" MaxLength="2" Nullable="true"/>
         <Property Name="DateHire" Type="Edm.Date" MaxLength="" Nullable="true"/>
         <Property Name="CareerLevel" Type="Edm.String" MaxLength="2" Nullable="true"/>
@@ -17,41 +17,46 @@
         <Key>
           <PropertyRef Name="ProjectId" />
         </Key>
+        <Property Name="ProjectId" Type="Edm.String" MaxLength="40" Nullable="false"/>
         <Property Name="ProjectName" Type="Edm.String" MaxLength="40" Nullable="true"/>
       </EntityType>
       <EntityType Name="Skill">
         <Key>
-          <PropertyRef Name="EmployeeId" Type="Edm.String" MaxLength="40" Nullable="false"/>
+          <PropertyRef Name="SkillId" />
         </Key>
-        <Property Name="SkillId" Type="Edm.String" MaxLength="10" Nullable="true"/>
-        <Property Name="ProficiencyID" Type="Edm.String" MaxLength="2" Nullable="true"/>
+        <Property Name="SkillId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="EmployeeID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="ProficiencyID" Type="Edm.String" MaxLength="2" Nullable="false"/>
         <Property Name="SkillName" Type="Edm.String" MaxLength="20" Nullable="true"/>
         <Property Name="ProficiencyLevel" Type="Edm.String" MaxLength="2" Nullable="true"/>
       </EntityType>
       <EntityType Name="ProficiencyList">
         <Key>
-          <PropertyRef Name="ProficiencyId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+          <PropertyRef Name="ProficiencyId" />
         </Key>
+        <Property Name="ProficiencyId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="ProficiencyLevel" Type="Edm.String" MaxLength="2" Nullable="true"/>
       </EntityType>
       <EntityType Name="SkillList">
         <Key>
-          <PropertyRef Name="SkillId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+          <PropertyRef Name="SkillId" />
         </Key>
+        <Property Name="SkillId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="SkillName" Type="Edm.String" MaxLength="20" Nullable="true"/>
       </EntityType>
       <EntityType Name="CareerList">
         <Key>
-          <PropertyRef Name="CareerId" Type="Edm.String" MaxLength="10" Nullable="false"/>
+          <PropertyRef Name="CareerId"/>
         </Key>
+        <Property Name="CareerId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="CareerLevel" Type="Edm.String" MaxLength="2" Nullable="true"/>
       </EntityType>
     </Schema>
     <Schema Namespace="Employee" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <EntityContainer Name="SAPEntities" m:IsDefaultEntityContainer="true">
-        <EntitySet Name="Employee" EntityType="SAP.Employee" />
+        <EntitySet Name="EmployeeList" EntityType="SAP.Employee" />
         <EntitySet Name="ProjectList" EntityType="SAP.ProjectList" />
-        <EntitySet Name="Skill" EntityType="SAP.Skill" />
+        <EntitySet Name="SkillDetails" EntityType="SAP.Skill" />
         <EntitySet Name="ProficiencyList" EntityType="SAP.ProficiencyList" />
         <EntitySet Name="SkillList" EntityType="SAP.SkillList" />
         <EntitySet Name="CareerList" EntityType="SAP.CareerList" />
