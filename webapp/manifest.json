@@ -95,8 +95,17 @@
         },
         {
           "name": "RouteAddView",
-          "pattern": "addView",
-          "target": ["TargetAddView"]
+          "pattern": "add",
+          "target": [
+            "TargetAddView"
+          ]
+        },
+        {
+          "name": "RouteEmployeeView",                     
+          "pattern": "employee",     
+          "target": [
+            "TargetEmployeeView"
+          ]
         }
       ],
       "targets": {
@@ -109,8 +118,12 @@
           "id": "addView",
           "name": "AddView",
           "level": 2
+        },
+        "TargetEmployeeView": {                      
+          "id": "employeeView",
+          "name": "EmployeeView"
         }
-      }
+      }  
     },
     "rootView": {
       "viewName": "sapips.training.employeeapp.view.App",
