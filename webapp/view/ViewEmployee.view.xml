@@ -1,0 +1,6 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" 
+          xmlns="sap.m" 
+          xmlns:form="sap.ui.layout.form"
+          controllerName="sapips.training.employeeapp.controller.ViewEmployee">
+
+</mvc:View>
