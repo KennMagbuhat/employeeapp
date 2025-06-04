@@ -1,10 +1,85 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
           xmlns="sap.m"
+          xmlns:form="sap.ui.layout.form"
+          xmlns:f="sap.ui.layout.form"
           controllerName="sapips.training.employeeapp.controller.AddView">
-    <Page id="addPage" title="Add Employee">
-        <VBox>
-            <Text text="This is the Add Employee Page!" />
-            
+    <Page id="addPage" 
+          title="{i18n>title}" 
+          showNavButton="true"
+          navButtonPress="onBack">
+        <VBox id="idVBox" class="sapUiSmallMargin">
+            <!-- SimpleForm Layout with ResponsiveGridLayout -->
+            <form:SimpleForm id="employeeForm" 
+                             editable="true" 
+                             layout="ResponsiveGridLayout" 
+                             title="{i18n>titleEmployee}" 
+                             labelSpanXL="3" 
+                             labelSpanL="3" 
+                             labelSpanM="3" 
+                             labelSpanS="12" 
+                             adjustLabelSpan="false" 
+                             emptySpanXL="4" 
+                             emptySpanL="4" 
+                             emptySpanM="4" 
+                             emptySpanS="0" 
+                             columnsXL="1" 
+                             columnsL="1" 
+                             columnsM="1" 
+                             singleContainerFullSize="false">
+                <f:content>
+                    <Label id="idLblEId" text="{i18n>employeeId}" required="false"/>
+                    <Input id="idInptEId" value="{/Employee/EmployeeID}" type="Text" maxLength="50" editable="false"/>
+                    
+                    <Label id="idLblFName" text="{i18n>firstName}" required="true"/>
+                    <Input id="idInptFName" value="{/Employee/FirstName}" type="Text" maxLength="32" liveChange="onFNameLiveChange"/>
+
+                    <Label id="idLblLName" text="{i18n>lastName}" required="true"/>
+                    <Input id="idInptLName" value="{/Employee/LastName}" type="Text" maxLength="32" liveChange="onLNameLiveChange"/>
+                    
+                    <Label id="idLblAge" text="{i18n>age}" required="true"/>
+                    <Input id="idInptAge" value="{/Employee/Age}" type="Number" maxLength="2" liveChange="onAgeLiveChange" />
+
+                    <Label id="idLblDate" text="{i18n>dateHire}" required="true"/>
+                    <DatePicker id="idDateHire"
+                        value="{/date}"        
+                        required="true"
+                        displayFormat="MMM dd, yyyy"
+                        change="onDateChange"
+                        valueFormat="yyyy-MM-dd"/>
+
+                <Label id="idLblCareer" text="{i18n>careerLevel}" required="true"/>
+                    <ComboBox
+                        id="idCombocareer"
+                        selectedKey="{/Employee/CareerLevel}"
+                        change="handleChange">
+                        
+                    </ComboBox>
+                    <Label id="idLblCurrentP" text="{i18n>currentProject}" required="true"/>
+                    <ComboBox
+                        id="idComboCurrentP"
+                        selectedKey="{/Employee/CurrentProject}"
+                        change="handleChange">
+                   
+                    </ComboBox>
+
+
+                </f:content>
+            </form:SimpleForm>  
         </VBox>
+         <footer>
+            <OverflowToolbar id="otbFooter">
+                <ToolbarSpacer/>
+                <Button text="{i18n>save}">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                    </layoutData>
+                </Button>
+                <Button text="{i18n>cancel}">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                    </layoutData>
+                </Button>
+            </OverflowToolbar>
+        </footer>
     </Page>
 </mvc:View>
