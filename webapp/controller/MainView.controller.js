@@ -10,8 +10,8 @@ sap.ui.define([
 
     return Controller.extend("sapips.training.employeeapp.controller.MainView", {
         onInit() {
-            const oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
-            this.getView().setModel(oModel);  
+            var oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
+            this.getView().setModel(oModel);  // default model
         },
         onAdd: function () {
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
@@ -61,16 +61,39 @@ sap.ui.define([
             const sQuery = oEvent.getParameter("newValue") || oEvent.getParameter("query");
             const oTable = this.getView().byId("employeeTable");
             const oBinding = oTable.getBinding("items");
-
-            if (oBinding) {
-                oBinding.filter([
-                    new sap.ui.model.Filter({
-                        path: "FirstName",
-                        operator: sap.ui.model.FilterOperator.Contains,
-                        value1: sQuery
-                    })
-                ]);
+        
+            var aFilters = [];
+        
+            if (sQuery) {
+                const isNumeric = !isNaN(sQuery);
+        
+                const aInnerFilters = [
+                    new sap.ui.model.Filter("EmployeeID", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("FirstName", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("LastName", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("DateHire", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("CareerLevel", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("CurrentProject", sap.ui.model.FilterOperator.Contains, sQuery)
+                ];
+        
+                if (isNumeric) {
+                    aInnerFilters.push(
+                        new sap.ui.model.Filter("Age", sap.ui.model.FilterOperator.EQ, parseInt(sQuery, 10))
+                    );
+                }
+        
+                aFilters.push(new sap.ui.model.Filter({
+                    filters: aInnerFilters,
+                    and: false // OR
+                }));
             }
-        }
+        
+            oBinding.filter(aFilters);
+        },
+        
+        onViewEmployeePage: function () {
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteEmployeeView");
+          }
     });
 });

@@ -40,7 +40,7 @@
                             <Text id="cellProject" text="{CurrentProject}" />
                             <Button id="bView"
                                 icon="sap-icon://navigation-right-arrow"
-                                press=".onEmployeeDetailPress"
+                                press="onViewEmployeePage"
                                 tooltip="{i18n>btnViewDetailsTooltip}"
                                 type="Transparent" />
                         </cells>
