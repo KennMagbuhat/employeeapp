@@ -95,20 +95,20 @@
         },
         {
           "name": "RouteAddView",
-          "pattern": "add",
-          "target": [
-            "TargetAddView"
-          ]
+          "pattern": "addView",
+          "target": ["TargetAddView"]
         }
       ],
       "targets": {
         "TargetMainView": {
-          "id": "MainView",
-          "name": "MainView"
+          "id": "mainView",
+          "name": "MainView",
+          "level": 1
         },
         "TargetAddView": {
-          "id": "AddView",
-          "name": "AddView"
+          "id": "addView",
+          "name": "AddView",
+          "level": 2
         }
       }
     },

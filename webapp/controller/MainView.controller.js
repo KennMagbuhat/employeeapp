@@ -11,15 +11,14 @@ sap.ui.define([
     return Controller.extend("sapips.training.employeeapp.controller.MainView", {
         onInit() {
             const oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
-            this.getView().setModel(oModel);  // default model
+            this.getView().setModel(oModel);  
         },
-
         onAdd: function () {
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
             MessageToast.show(oBundle.getText("msgAddClicked"));
 
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("add");
+            oRouter.navTo("RouteAddView");
         },
 
         onDelete: function () {
