@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
-  ], (Controller, JSONModel) => {
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/routing/History"
+  ], (Controller, JSONModel, History) => {
     "use strict";
   
     return Controller.extend("sapips.training.employeeapp.controller.EmployeeView", {
@@ -27,7 +28,23 @@ sap.ui.define([
               console.log("nodata");
              }
           });
+        },
 
+        onCancel: function(){
+          let oRouter = this.getOwnerComponent().getRouter();
+          let sPreviousHash = History.getInstance().getPreviousHash();
+          if (sPreviousHash !== undefined) {
+            window.history.go(-1);
+          } else {
+              oRouter.navTo("RouteMainView", {}, true);
+          }
+        },
+
+        onToEdit: function(){
+          let oRouter = this.getOwnerComponent().getRouter();
+          oRouter.navTo("RouteEmployeeEditView",{
+            employeeID: eid
+        });
         }
 
     });

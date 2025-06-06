@@ -23,9 +23,30 @@
                         </Panel>
                     </IconTabFilter>
                     <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
+                        <Table id="skillsTableEmpView" items="{path : '/'}">
+                            <columns>
+                                 <Column id="colSKillsId"><Text id="txtHeaderSkillsId" text="{i18n>skillsCol}" /></Column>
+                                 <Column id="colProficiencyId"><Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}" /></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="employeeSkillRow">
+                                    <cells>
+                                        <Text id="skillDetEmpId" text="skill1" />
+                                        <Text id="proficiencyDetEmpId" text="2" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
                     </IconTabFilter>
                 </items>
             </IconTabBar>
         </Panel>
+        <footer>
+            <OverflowToolbar id="viewEmpOft">
+                <ToolbarSpacer id="viewEmpOftbs"/>
+                <Button id="editButtonId" text="{i18n>edit}"/>
+                <Button id="viewEmpCancelButtonId" text="{i18n>cancel}" press="onCancel"/>
+            </OverflowToolbar>
+        </footer>
     </Page>
 </mvc:View>

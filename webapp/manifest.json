@@ -106,6 +106,13 @@
           "target": [
             "TargetEmployeeView"
           ]
+        },
+        {
+          "name": "RouteEmployeeEditView",                     
+          "pattern": "employee/{employeeID}",     
+          "target": [
+            "TargetEmployeeEditView"
+          ]
         }
       ],
       "targets": {
@@ -122,6 +129,10 @@
         "TargetEmployeeView": {                      
           "id": "employeeView",
           "name": "EmployeeView"
+        },
+        "TargetEmployeeEditView": {                      
+          "id": "employeeEditView",
+          "name": "EmployeeEditView"
         }
       }  
     },
