@@ -1,9 +1,13 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" 
           xmlns="sap.m" 
           xmlns:form="sap.ui.layout.form"
-          controllerName="sapips.training.employeeapp.controller.ViewEmployee">
+          controllerName="sapips.training.employeeapp.controller.EmployeeView">
     <Page id="viewEmployee">
-        <Panel id="employeeTitle Panel">
+        <Panel id="employeeMainInfo">
+            <Title id="empTitleView" text="FirstName Lastname"></Title>
+            <Text id="empCL" text="{ i18n>clViewEmployee }"></Text>
+        </Panel>
+        <Panel id="detailsOfEmployee">
         </Panel>
     </Page>
 </mvc:View>
