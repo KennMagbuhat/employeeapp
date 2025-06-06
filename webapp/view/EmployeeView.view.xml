@@ -2,7 +2,7 @@
     <Page id="viewEmployeePage" title="{i18n>title}">
         <Panel id="nameAndCL">
             <VBox id="nameClVbox">
-                <Title id="nameEmp" text="{FirstName} {LastName}"/>
+                <Title id="nameEmp" text="{empList>/FirstName} {empList>/LastName}"/>
                 <Text id="clEmp" text="{i18n>cLViewEmployee}"/>
             </VBox>
         </Panel>
@@ -23,7 +23,8 @@
                         </Panel>
                     </IconTabFilter>
                     <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
-                        <Table id="skillsTableEmpView" items="{path : '/'}">
+                        <Title id="skillsTableTitleId" text="{i18n>skillsTab}"></Title>
+                        <Table id="skillsTableEmpView" items="{path : './skill'}">
                             <columns>
                                  <Column id="colSKillsId"><Text id="txtHeaderSkillsId" text="{i18n>skillsCol}"/></Column>
                                  <Column id="colProficiencyId"><Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}"/></Column>
@@ -31,7 +32,7 @@
                             <items>
                                 <ColumnListItem id="employeeSkillRow">
                                     <cells>
-                                        <Text id="skillDetEmpId" text="skill1"/>
+                                        <Text id="skillDetEmpId" text="{skill>SkillName}"/>
                                         <Text id="proficiencyDetEmpId" text="2"/>
                                     </cells>
                                 </ColumnListItem>

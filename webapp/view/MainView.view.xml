@@ -15,7 +15,7 @@
                       <Button id="deleteButton" text="{i18n>btnDelete}" type="Reject" press="onDelete" class="sapUiSmallMarginBegin" />
                   </HBox>
               </HBox>
-
+            
               <Table id="employeeTable" items="{path : '/'}" mode="MultiSelect"  >
                 <columns>
                     <Column id="colEmpId"><Text id="txtHeaderEmpId" text="{i18n>colEmpId}" /></Column>

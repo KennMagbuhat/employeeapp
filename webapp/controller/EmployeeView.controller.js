@@ -10,24 +10,33 @@ sap.ui.define([
           var oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
           this.getView().setModel(oModel);  // default model
 
+          let oSkillModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/Skill.json"));
+          this.getView().setModel(oSkillModel, "skill");
+
+          //get router to pass data
           let oRouter = this.getOwnerComponent().getRouter();
           oRouter.getRoute("RouteEmployeeView").attachPatternMatched(this._onObjectMatched, this);
+
+          //set the skills table title.
+          /**let oTitle = this.getView().byId("skillsTableTitleId");
+          const oTable = this.getView().byId("skillsTableEmpView");
+          const oItems = oTable.getBinding("items");
+          let sktext = oTitle.getText();
+          let listlength = Object.keys(oItems.oList).length;
+          console.log(oItems.oList);
+          sktext += "(" + listlength + ")";
+          oTitle.setText(sktext);*/
         },
 
         _onObjectMatched(oEvent){
           let oModel = this.getOwnerComponent().getModel();
           let args = oEvent.getParameter("arguments");
           let eid_arg = args["employeeID"];
-          let read_arg = "(EmployeeID="+eid_arg+")";
-
-          oModel.read(read_arg, {
-             success: function(data){
-              console.log(data);
-             },
-             error: function(data){
-              console.log("nodata");
-             }
+          let sReadUri = oModel.createKey("/", {
+            EmployeeID: eid_arg
           });
+          
+
         },
 
         onCancel: function(){
