@@ -3,7 +3,7 @@ sap.ui.define([
   ], (Controller) => {
     "use strict";
   
-    return Controller.extend("sapips.training.employeeapp.controller.ViewEmployee", {
+    return Controller.extend("sapips.training.employeeapp.controller.EmployeeView", {
         onInit() {
         }
     });
