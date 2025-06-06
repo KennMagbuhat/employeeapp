@@ -7,32 +7,32 @@
             </VBox>
         </Panel>
         <Panel id="empDetailsAll">
-            <IconTabBar id="deetsAndSKillsNav" backgroundDesign="Transparent" >
+            <IconTabBar id="deetsAndSKillsNav" backgroundDesign="Transparent">
                 <items>
                     <IconTabFilter id="detailsTab" text="{i18n>detailsTab}">
                         <Panel id="empDetailsPanelId" headerText="{i18n>empDetailsTitle}">
                             <VBox id="detailsListing">
-                                <Text id="empIdDet" text="{i18n>employeeId}: {EmployeeId}" />
-                                <Text id="empFnDet" text="{i18n>firstName}: {EmployeeId}" />
-                                <Text id="empLnDet" text="{i18n>lastName}: {EmployeeId}" />
-                                <Text id="empAgeDet" text="{i18n>age}: {EmployeeId}" />
-                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {EmployeeId}" />
-                                <Text id="empClDet" text="{i18n>careerLevel}: {EmployeeId}" />
-                                <Text id="empCpDet" text="{i18n>currentProject}: {EmployeeId}" />
+                                <Text id="empIdDet" text="{i18n>employeeId}: {EmployeeId}"/>
+                                <Text id="empFnDet" text="{i18n>firstName}: {EmployeeId}"/>
+                                <Text id="empLnDet" text="{i18n>lastName}: {EmployeeId}"/>
+                                <Text id="empAgeDet" text="{i18n>age}: {EmployeeId}"/>
+                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {EmployeeId}"/>
+                                <Text id="empClDet" text="{i18n>careerLevel}: {EmployeeId}"/>
+                                <Text id="empCpDet" text="{i18n>currentProject}: {EmployeeId}"/>
                             </VBox>
                         </Panel>
                     </IconTabFilter>
                     <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
                         <Table id="skillsTableEmpView" items="{path : '/'}">
                             <columns>
-                                 <Column id="colSKillsId"><Text id="txtHeaderSkillsId" text="{i18n>skillsCol}" /></Column>
-                                 <Column id="colProficiencyId"><Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}" /></Column>
+                                 <Column id="colSKillsId"><Text id="txtHeaderSkillsId" text="{i18n>skillsCol}"/></Column>
+                                 <Column id="colProficiencyId"><Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}"/></Column>
                             </columns>
                             <items>
                                 <ColumnListItem id="employeeSkillRow">
                                     <cells>
-                                        <Text id="skillDetEmpId" text="skill1" />
-                                        <Text id="proficiencyDetEmpId" text="2" />
+                                        <Text id="skillDetEmpId" text="skill1"/>
+                                        <Text id="proficiencyDetEmpId" text="2"/>
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -44,7 +44,7 @@
         <footer>
             <OverflowToolbar id="viewEmpOft">
                 <ToolbarSpacer id="viewEmpOftbs"/>
-                <Button id="editButtonId" text="{i18n>edit}"/>
+                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized"/>
                 <Button id="viewEmpCancelButtonId" text="{i18n>cancel}" press="onCancel"/>
             </OverflowToolbar>
         </footer>
