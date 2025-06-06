@@ -98,7 +98,6 @@ sap.ui.define([
             let source = oEvent.getSource().getId();
             let idx = source.charAt(source.length -1);
             let eid = oItems.oList[idx].EmployeeID;
-            console.log(eid);
     
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteEmployeeView",{

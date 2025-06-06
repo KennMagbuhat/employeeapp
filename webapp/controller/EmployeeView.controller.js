@@ -14,10 +14,20 @@ sap.ui.define([
         },
 
         _onObjectMatched(oEvent){
+          let oModel = this.getOwnerComponent().getModel();
           let args = oEvent.getParameter("arguments");
           let eid_arg = args["employeeID"];
+          let read_arg = "(EmployeeID="+eid_arg+")";
 
-          oModel.read("")
+          oModel.read(read_arg, {
+             success: function(data){
+              console.log(data);
+             },
+             error: function(data){
+              console.log("nodata");
+             }
+          });
+
         }
 
     });
