@@ -1,13 +1,31 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" 
-          xmlns="sap.m" 
-          xmlns:form="sap.ui.layout.form"
-          controllerName="sapips.training.employeeapp.controller.EmployeeView">
-    <Page id="viewEmployee">
-        <Panel id="employeeMainInfo">
-            <Title id="empTitleView" text="FirstName Lastname"></Title>
-            <Text id="empCL" text="{ i18n>clViewEmployee }"></Text>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" controllerName="sapips.training.employeeapp.controller.EmployeeView">
+    <Page id="viewEmployeePage" title="{i18n>title}">
+        <Panel id="nameAndCL">
+            <VBox id="nameClVbox">
+                <Title id="nameEmp" text="{FirstName} {LastName}"/>
+                <Text id="clEmp" text="{i18n>cLViewEmployee}"/>
+            </VBox>
         </Panel>
-        <Panel id="detailsOfEmployee">
+        <Panel id="empDetailsAll">
+            <IconTabBar id="deetsAndSKillsNav" backgroundDesign="Transparent" >
+                <items>
+                    <IconTabFilter id="detailsTab" text="{i18n>detailsTab}">
+                        <Panel id="empDetailsPanelId" headerText="{i18n>empDetailsTitle}">
+                            <VBox id="detailsListing">
+                                <Text id="empIdDet" text="{i18n>employeeId}: {EmployeeId}" />
+                                <Text id="empFnDet" text="{i18n>firstName}: {EmployeeId}" />
+                                <Text id="empLnDet" text="{i18n>lastName}: {EmployeeId}" />
+                                <Text id="empAgeDet" text="{i18n>age}: {EmployeeId}" />
+                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {EmployeeId}" />
+                                <Text id="empClDet" text="{i18n>careerLevel}: {EmployeeId}" />
+                                <Text id="empCpDet" text="{i18n>currentProject}: {EmployeeId}" />
+                            </VBox>
+                        </Panel>
+                    </IconTabFilter>
+                    <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
         </Panel>
     </Page>
 </mvc:View>

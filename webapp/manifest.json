@@ -102,7 +102,7 @@
         },
         {
           "name": "RouteEmployeeView",                     
-          "pattern": "employee",     
+          "pattern": "employee/{employeeID}",     
           "target": [
             "TargetEmployeeView"
           ]
