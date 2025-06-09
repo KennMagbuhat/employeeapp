@@ -10,8 +10,6 @@ sap.ui.define([
 
     return Controller.extend("sapips.training.employeeapp.controller.MainView", {
         onInit() {
-            var oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
-            this.getView().setModel(oModel);  // default model
         },
         onAdd: function () {
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
