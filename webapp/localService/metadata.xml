@@ -51,15 +51,16 @@
         <Property Name="CareerId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="CareerLevel" Type="Edm.String" MaxLength="2" Nullable="true"/>
       </EntityType>
-      
+     
       <EntityContainer Name="EMPLOYEE_SRV_Entities" m:IsDefaultEntityContainer="true">
-        <EntitySet Name="EmployeeList" EntityType="SAP.Employee" />
-        <EntitySet Name="ProjectList" EntityType="SAP.ProjectList" />
-        <EntitySet Name="SkillDetails" EntityType="SAP.Skill" />
-        <EntitySet Name="ProficiencyList" EntityType="SAP.ProficiencyList" />
-        <EntitySet Name="SkillList" EntityType="SAP.SkillList" />
-        <EntitySet Name="CareerList" EntityType="SAP.CareerList" />
+        <EntitySet Name="Employee" EntityType="EMPLOYEE_SRV.Employee" />
+        <EntitySet Name="ProjectList" EntityType="EMPLOYEE_SRV.ProjectList" />
+        <EntitySet Name="SkillDetails" EntityType="EMPLOYEE_SRV.Skill" />
+        <EntitySet Name="ProficiencyList" EntityType="EMPLOYEE_SRV.ProficiencyList" />
+        <EntitySet Name="SkillList" EntityType="EMPLOYEE_SRV.SkillList" />
+        <EntitySet Name="CareerList" EntityType="EMPLOYEE_SRV.CareerList" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
+ 

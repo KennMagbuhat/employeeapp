@@ -1,39 +1,49 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" controllerName="sapips.training.employeeapp.controller.EmployeeView">
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:form="sap.ui.layout.form"
+          controllerName="sapips.training.employeeapp.controller.EmployeeView">
+ 
     <Page id="viewEmployeePage" title="{i18n>title}">
         <Panel id="nameAndCL">
             <VBox id="nameClVbox">
-                <Title id="nameEmp" text="{empList>/FirstName} {empList>/LastName}"/>
-                <Text id="clEmp" text="{i18n>cLViewEmployee}"/>
+                <Title id="nameEmp" text="{FirstName} {LastName}" />
+                <Text id="clEmp" text="{i18n>cLViewEmployee}" />
             </VBox>
         </Panel>
+ 
         <Panel id="empDetailsAll">
-            <IconTabBar id="deetsAndSKillsNav" backgroundDesign="Transparent">
+            <IconTabBar id="deetsAndSkillsNav" backgroundDesign="Transparent">
                 <items>
                     <IconTabFilter id="detailsTab" text="{i18n>detailsTab}">
                         <Panel id="empDetailsPanelId" headerText="{i18n>empDetailsTitle}">
                             <VBox id="detailsListing">
-                                <Text id="empIdDet" text="{i18n>employeeId}: {EmployeeId}"/>
-                                <Text id="empFnDet" text="{i18n>firstName}: {FirstName}"/>
-                                <Text id="empLnDet" text="{i18n>lastName}: {LastName}"/>
-                                <Text id="empAgeDet" text="{i18n>age}: {Age}"/>
-                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {DateHire}"/>
-                                <Text id="empClDet" text="{i18n>careerLevel}: {CareerLevel}"/>
-                                <Text id="empCpDet" text="{i18n>currentProject}: {CurrentProject}"/>
+                                <Text id="empIdDet" text="{i18n>employeeId}: {EmployeeID}" />
+                                <Text id="empFnDet" text="{i18n>firstName}: {FirstName}" />
+                                <Text id="empLnDet" text="{i18n>lastName}: {LastName}" />
+                                <Text id="empAgeDet" text="{i18n>age}: {Age}" />
+                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {DateHire}" />
+                                <Text id="empClDet" text="{i18n>careerLevel}: {CareerLevel}" />
+                                <Text id="empCpDet" text="{i18n>currentProject}: {CurrentProject}" />
                             </VBox>
                         </Panel>
                     </IconTabFilter>
+ 
                     <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
-                        <Title id="skillsTableTitleId" text="{i18n>skillsTab}"></Title>
-                        <Table id="skillsTableEmpView">
+                        <Title id="skillsTableTitleId" text="{i18n>skillsTab}" />
+                        <Table id="skillsTableEmpView" items="{to_Skills}">
                             <columns>
-                                 <Column id="colSKillsId"><Text id="txtHeaderSkillsId" text="{i18n>skillsCol}"/></Column>
-                                 <Column id="colProficiencyId"><Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}"/></Column>
+                                <Column id="colSkillsId">
+                                    <Text id="txtHeaderSkillsId" text="{i18n>skillsCol}" />
+                                </Column>
+                                <Column id="colProficiencyId">
+                                    <Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}" />
+                                </Column>
                             </columns>
                             <items>
                                 <ColumnListItem id="employeeSkillRow">
                                     <cells>
-                                        <Text id="skillDetEmpId" text="{/Skill/SkillName}"/>
-                                        <Text id="proficiencyDetEmpId" text="2"/>
+                                        <Text id="skillDetEmpId" text="{SkillName}" />
+                                        <Text id="proficiencyDetEmpId" text="{Proficiency}" />
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -42,11 +52,12 @@
                 </items>
             </IconTabBar>
         </Panel>
+ 
         <footer>
             <OverflowToolbar id="viewEmpOft">
-                <ToolbarSpacer id="viewEmpOftbs"/>
-                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized"/>
-                <Button id="viewEmpCancelButtonId" text="{i18n>cancel}" press="onCancel"/>
+                <ToolbarSpacer id="viewEmpOftbs" />
+                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized" />
+                <Button id="viewEmpCancelButtonId" text="{i18n>cancel}" press="onCancel" />
             </OverflowToolbar>
         </footer>
     </Page>

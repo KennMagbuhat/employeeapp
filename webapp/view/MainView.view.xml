@@ -16,7 +16,7 @@
                   </HBox>
               </HBox>
 
-              <Table id="employeeTable" items="{/EmployeeList}" mode="MultiSelect"  >
+              <Table id="employeeTable" items="{/Employee}" mode="MultiSelect"  >
                 <columns>
                     <Column id="colEmpId"><Text id="txtHeaderEmpId" text="{i18n>colEmpId}" /></Column>
                     <Column id="colFirstName"><Text id="txtHeaderFirstName" text="{i18n>colFirstName}" /></Column>

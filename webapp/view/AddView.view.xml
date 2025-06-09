@@ -43,8 +43,7 @@
 
                     <Label id="idLblDate" text="Date of Hire" required="true"/>
                     <DatePicker 
-                        id="idDateHire"
-                        value="{/date}"        
+                        id="idDateHire"       
                         required="true"
                         displayFormat="MMM dd, yyyy"
                         valueFormat="yyyy-MM-dd"/>
@@ -53,18 +52,18 @@
                     <ComboBox
                         id="idComboCareer"
                         change="onCareerLvlChange"
-                        items="{path: 'career>/' }"
+                        items="{path: '/CareerList' }"
                         placeholder="Please enter a value">
-                            <core:Item id="itemCareerLvl" key="{career>CareerId}" text="{career>CareerLevel}" />
+                            <core:Item id="itemCareerLvl" key="{CareerId}" text="{CareerLevel}" />
                     </ComboBox>
 
                     <Label id="idLblCurrentP" text="{i18n>currentProject}" required="true" />
                     <ComboBox
                         id="idComboCurrentP"
                         change="onProjListChange"
-                        items="{path: 'project>/' }"
+                        items="{path: '/ProjectList' }"
                         placeholder="Please enter a value">
-                            <core:Item id="itemProjectList" key="{project>ProjectId}" text="{project>ProjectName}"/>
+                            <core:Item id="itemProjectList" key="{ProjectId}" text="{ProjectName}"/>
                     </ComboBox>
              </f:content>
             </form:SimpleForm> 
@@ -89,24 +88,20 @@
                     </cells>
                 </ColumnListItem>
             </items>
-        </Table>
-
-            
-
+        </Table> 
         </VBox>
-
 
          <footer>
             <OverflowToolbar id="otbFooter">
-                <ToolbarSpacer/>
-                <Button text="{i18n>save}">
+                <ToolbarSpacer id="toolbar"/>
+                <Button  id="buttonSave" text="{i18n>save}" press="onPressSave">
                     <layoutData>
-                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                        <OverflowToolbarLayoutData id="idOverFlow" priority="NeverOverflow"/>
                     </layoutData>
                 </Button>
-                <Button text="{i18n>cancel}">
+                <Button id="buttonCancel" text="{i18n>cancel}" press="onCancel">
                     <layoutData>
-                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                        <OverflowToolbarLayoutData id="idOverFlowTool" priority="NeverOverflow"/>
                     </layoutData>
                 </Button>
             </OverflowToolbar>
