@@ -2,7 +2,7 @@
     <Page id="viewEmployeePage" title="{i18n>title}">
         <Panel id="nameAndCL">
             <VBox id="nameClVbox">
-                <Title id="nameEmp" text="{FirstName} {LastName}"/>
+                <Title id="nameEmp" text="{empList>/FirstName} {empList>/LastName}"/>
                 <Text id="clEmp" text="{i18n>cLViewEmployee}"/>
             </VBox>
         </Panel>
@@ -13,18 +13,18 @@
                         <Panel id="empDetailsPanelId" headerText="{i18n>empDetailsTitle}">
                             <VBox id="detailsListing">
                                 <Text id="empIdDet" text="{i18n>employeeId}: {EmployeeId}"/>
-                                <Text id="empFnDet" text="{i18n>firstName}: {EmployeeId}"/>
-                                <Text id="empLnDet" text="{i18n>lastName}: {EmployeeId}"/>
-                                <Text id="empAgeDet" text="{i18n>age}: {EmployeeId}"/>
-                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {EmployeeId}"/>
-                                <Text id="empClDet" text="{i18n>careerLevel}: {EmployeeId}"/>
-                                <Text id="empCpDet" text="{i18n>currentProject}: {EmployeeId}"/>
+                                <Text id="empFnDet" text="{i18n>firstName}: {FirstName}"/>
+                                <Text id="empLnDet" text="{i18n>lastName}: {LastName}"/>
+                                <Text id="empAgeDet" text="{i18n>age}: {Age}"/>
+                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {DateHire}"/>
+                                <Text id="empClDet" text="{i18n>careerLevel}: {CareerLevel}"/>
+                                <Text id="empCpDet" text="{i18n>currentProject}: {CurrentProject}"/>
                             </VBox>
                         </Panel>
                     </IconTabFilter>
                     <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
                         <Title id="skillsTableTitleId" text="{i18n>skillsTab}"></Title>
-                        <Table id="skillsTableEmpView" items="{path : '/empSkills'}">
+                        <Table id="skillsTableEmpView">
                             <columns>
                                  <Column id="colSKillsId"><Text id="txtHeaderSkillsId" text="{i18n>skillsCol}"/></Column>
                                  <Column id="colProficiencyId"><Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}"/></Column>
