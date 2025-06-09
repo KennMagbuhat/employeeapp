@@ -108,7 +108,13 @@
           "name": "RouteEmployeeView",                     
           "pattern": "employee",     
           "target": [
-            "TargetEmployeeView"
+            "TargetEmployeeView"]
+        },
+        {  
+          "name": "RouteEmployeePage",                     
+          "pattern": "employeePage",     
+          "target": [
+            "TargetEmployeePage"
           ]
         }
       ],

@@ -63,55 +63,22 @@ sap.ui.define([
             var aFilters = [];
         
             if (sQuery) {
-                let nNumericValue;
-                    if (!isNaN(sValue)) {
-                    nNumericValue = parseInt(sValue);
-                }
-
-                let aInnerFilters = [
-                    new Filter({
-                        path: 'EmployeeId',
-                        operator: sap.ui.model.FilterOperator.Contains,
-                        value1: sValue,
-                        caseSensitive: true
-                    }),
-                    new Filter({
-                        path: 'FirstName',
-                        operator: sap.ui.model.FilterOperator.Contains,
-                        value1: sValue,
-                        caseSensitive: false
-                    }),
-                    new Filter({
-                        path: 'LastName',
-                        operator: sap.ui.model.FilterOperator.Contains,
-                        value1: sValue,
-                        caseSensitive: false
-                    }),
-                    new Filter({
-                        path: 'Age',
-                        operator: sap.ui.model.FilterOperator.EQ,
-                        value1: nNumericValue,
-                        caseSensitive: false
-                    }),
-                    new Filter({
-                        path: 'DateHire',
-                        operator: sap.ui.model.FilterOperator.Contains,
-                        value1: sValue,
-                        caseSensitive: false
-                    }),
-                    new Filter({
-                        path: 'CareerLevel',
-                        operator: sap.ui.model.FilterOperator.Contains,
-                        value1: sValue,
-                        caseSensitive: false
-                    }),
-                    new Filter({
-                        path: 'CurrentProject',
-                        operator: sap.ui.model.FilterOperator.Contains,
-                        value1: sValue,
-                        caseSensitive: false
-                    })
+                const isNumeric = !isNaN(sQuery);
+        
+                const aInnerFilters = [
+                    new sap.ui.model.Filter("EmployeeID", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("FirstName", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("LastName", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("DateHire", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("CareerLevel", sap.ui.model.FilterOperator.Contains, sQuery),
+                    new sap.ui.model.Filter("CurrentProject", sap.ui.model.FilterOperator.Contains, sQuery)
                 ];
+        
+                if (isNumeric) {
+                    aInnerFilters.push(
+                        new sap.ui.model.Filter("Age", sap.ui.model.FilterOperator.EQ, parseInt(sQuery, 10))
+                    );
+                }
         
                 aFilters.push(new sap.ui.model.Filter({
                     filters: aInnerFilters,
@@ -122,9 +89,15 @@ sap.ui.define([
             oBinding.filter(aFilters);
         },
         
-        onViewEmployeePage: function () {
-            var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("RouteEmployeeView");
-          }
+        onViewEmployeePage: function (oEvent) {
+            var oItem = oEvent.getSource().getParent();
+            var oContext = oItem.getBindingContext();
+            var sEmployeeID = oContext.getProperty("EmployeeID");
+          
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("employeePage", {
+              employeeId: sEmployeeID
+            });
+git add controller/MainView.controller.js manifest.json          }
     });
 });
