@@ -14,7 +14,6 @@ sap.ui.define([
       _onObjectMatched: function (oEvent) {
           const sEmployeeID = oEvent.getParameter("arguments").employeeID;
 
-          // Bind entire EMPLOYEE entity (main + navigation)
           const sPath = "/Employee('" + sEmployeeID + "')";
           const oView = this.getView();
 

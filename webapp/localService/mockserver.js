@@ -8,12 +8,6 @@ sap.ui.define([
         _sJsonFilesModulePath = _sAppModulePath + "localService/mockdata";
 
     return {
-        /**
-         * Initializes the mock server.
-         * You can configure the delay with the URL parameter "serverDelay".
-         * The local mock data in this folder is returned instead of the real data for testing.
-         * @public
-         */
 
         init : function () {
             var oUriParameters = jQuery.sap.getUriParameters(),
