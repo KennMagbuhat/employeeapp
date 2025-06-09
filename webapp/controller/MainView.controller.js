@@ -3,28 +3,36 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/m/MessageBox",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function (Controller, MessageToast, MessageBox, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/json/JSONModel"
+], function (Controller, MessageToast, MessageBox, Filter, FilterOperator, JSONModel) {
     "use strict";
 
     return Controller.extend("sapips.training.employeeapp.controller.MainView", {
         onInit: function () {
-            const oTable = this.byId("employeeTable");
-            const oPage = this.byId("page");
-     
-            const fnUpdateTitle = () => {
-              const iLength = oTable.getBinding("items")?.getLength() || 0;
-              oPage.setTitle(`Employees (${iLength})`);
-            };
-     
+            const oTable = this.getView().byId("employeeTable");
+
+            const oViewModel = new JSONModel({
+                employeeTitle: this._generateEmployeeTitle(0)
+            });
+            this.getView().setModel(oViewModel, "viewModel");
+
+            oTable.attachUpdateFinished(() => {
+                this._updateEmployeeCount();
+            });
+        },
+
+        _generateEmployeeTitle: function (iCount) {
+            return "Employees (" + iCount + ")";
+        },
+
+        _updateEmployeeCount: function () {
+            const oTable = this.getView().byId("employeeTable");
             const oBinding = oTable.getBinding("items");
-     
-            if (oBinding) {
-              oBinding.attachChange(fnUpdateTitle); // dynamic updates
-            } else {
-              // fallback if binding isn't ready yet
-              oTable.attachEventOnce("updateFinished", fnUpdateTitle);
-            }
+            const iCount = oBinding ? oBinding.getLength() : 0;
+
+            const oViewModel = this.getView().getModel("viewModel");
+            oViewModel.setProperty("/employeeTitle", this._generateEmployeeTitle(iCount));
         },
 
         onAdd: function () {
@@ -39,28 +47,28 @@ sap.ui.define([
             const oTable = this.getView().byId("employeeTable");
             const aSelectedItems = oTable.getSelectedItems();
             const oBundle = this.getView().getModel("i18n").getResourceBundle();
-        
-            // Check if at least one row is selected
+
             if (aSelectedItems.length === 0) {
                 MessageToast.show(oBundle.getText("selectOne"));
                 return;
             }
-        
+
             MessageBox.confirm(oBundle.getText("deleteContent"), {
                 title: oBundle.getText("deleteTitle"),
                 actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
                 emphasizedAction: MessageBox.Action.OK,
                 onClose: (sAction) => {
                     if (sAction === MessageBox.Action.OK) {
-                        const oModel = this.getView().getModel(); 
-        
+                        const oModel = this.getView().getModel();
+
                         aSelectedItems.forEach((oItem) => {
                             const oContext = oItem.getBindingContext();
                             const sPath = oContext.getPath();
-        
+
                             oModel.remove(sPath, {
                                 success: () => {
                                     MessageToast.show(oBundle.getText("deletedSuccess"));
+                                    this._updateEmployeeCount();
                                 },
                                 error: (oError) => {
                                     MessageToast.show(oBundle.getText("deleteFailed"));
@@ -68,14 +76,14 @@ sap.ui.define([
                                 }
                             });
                         });
-        
+
                         oTable.removeSelections(true);
                     } else {
                         MessageToast.show(oBundle.getText("deleteCancel"));
                     }
                 }
             });
-        },            
+        },
 
         onSearch: function (oEvent) {
             const sQuery = oEvent.getParameter("newValue") || oEvent.getParameter("query");
@@ -97,26 +105,22 @@ sap.ui.define([
                 ];
 
                 if (isNumeric) {
-                    aInnerFilters.push(
-                        new Filter("Age", FilterOperator.EQ, parseInt(sQuery, 10))
-                    );
+                    aInnerFilters.push(new Filter("Age", FilterOperator.EQ, parseInt(sQuery, 10)));
                 }
 
                 aFilters.push(new Filter({
                     filters: aInnerFilters,
-                    and: false // OR logic
+                    and: false
                 }));
             }
 
             oBinding.filter(aFilters);
+            this._updateEmployeeCount(); 
         },
 
         onViewEmployeePage: function (oEvent) {
-            const oTable = this.getView().byId("employeeTable");
-            const oBinding = oTable.getBinding("items");
             const oItem = oEvent.getSource().getParent();
-            const oContext = oItem.getBindingContext();
-            const sEmployeeID = oContext.getProperty("EmployeeID");
+            const sEmployeeID = oItem.getBindingContext().getProperty("EmployeeID");
 
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteEmployeeView", {

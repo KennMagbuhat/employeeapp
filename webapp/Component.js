@@ -26,11 +26,7 @@ sap.ui.define([
             //Start the mock OData Service
             this.initializeODataService();
         },
-                   /**
-             * //TODO: Initialization will be transferred once the actual oData Service connection becomes available.
-             * 
-             * Initialize the Mock Service using the GEMS BCRA Metadata
-             */
+            
         initializeODataService: function () {
             mockserver.init();
 

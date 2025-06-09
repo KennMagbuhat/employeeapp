@@ -10,25 +10,26 @@ sap.ui.define([
     return Controller.extend("sapips.training.employeeapp.controller.AddView", {
         onInit: function () {
             const oView = this.getView();
-        
 
-        
             const oSkillModel = new JSONModel();
             oSkillModel.loadData(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mockdata/SkillList.json"));
             oView.setModel(oSkillModel, "skill");
-        
+
             oView.setModel(new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mockdata/ProficiencyList.json")), "proficiency");
             oView.setModel(new JSONModel({ skills: [] }), "skillsTableModel");
-        
-            const oDatePicker = oView.byId("idDateHire");
+
+            this._setDefaultHireDate(); 
+        },
+
+        _setDefaultHireDate: function () {
+            const oDatePicker = this.byId("idDateHire");
             const oToday = new Date();
-        
             const oMaxDate = new Date();
             oMaxDate.setFullYear(oToday.getFullYear() + 1);
-        
-            oDatePicker.setDateValue(oToday); 
-            oDatePicker.setMaxDate(oMaxDate); 
-        },        
+
+            oDatePicker.setDateValue(oToday);
+            oDatePicker.setMaxDate(oMaxDate);
+        },
 
         onAdd: function () {
             if (!this.oDialog) {
@@ -46,9 +47,9 @@ sap.ui.define([
             const oProfCombo = oView.byId("idComboProficient");
 
             const sSkillKey = oSkillCombo.getSelectedKey();
-            const sSkillText = oSkillCombo.getSelectedItem() ? oSkillCombo.getSelectedItem().getText() : "";
+            const sSkillText = oSkillCombo.getSelectedItem()?.getText() || "";
             const sProfKey = oProfCombo.getSelectedKey();
-            const sProfText = oProfCombo.getSelectedItem() ? oProfCombo.getSelectedItem().getText() : "";
+            const sProfText = oProfCombo.getSelectedItem()?.getText() || "";
 
             if (!sSkillKey || !sProfKey) {
                 MessageToast.show(oBundle.getText("inputProf"));
@@ -188,7 +189,7 @@ sap.ui.define([
             this.byId("idInptFName").setValue("");
             this.byId("idInptLName").setValue("");
             this.byId("idInptAge").setValue("");
-            this.byId("idDateHire").setDateValue(null);
+            this._setDefaultHireDate(); // Reset to today's date again
             this.byId("idComboCareer").setSelectedKey("");
             this.byId("idComboCurrentP").setSelectedKey("");
             this.getView().getModel("skillsTableModel").setProperty("/skills", []);

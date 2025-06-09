@@ -7,7 +7,7 @@
            <VBox id="mainVBox">
             <HBox id="toolbarBox" justifyContent="SpaceBetween" alignItems="End" class="sapUiSmallMarginBottom">
     
-                  <Title id="employeeTitle" text="{i18n>employeeTitle}" level="H2" />
+                  <Title id="employeeTitle" text="{viewModel>/employeeTitle}" level="H2" />
 
                   <HBox id="actionButtonsBox" alignItems="Center" justifyContent="End" renderType="Bare">
                       <SearchField id="searchField" placeholder="{i18n>searchPlaceholder}" width="200px" liveChange="onSearch" />

@@ -8,7 +8,7 @@ sap.ui.define([
     return Controller.extend("sapips.training.employeeapp.controller.EmployeeEditView", {
         onInit() {
           var oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
-          this.getView().setModel(oModel, "empList");  // default model
+          this.getView().setModel(oModel, "empList"); 
 
           var oSkillModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/Skill.json"));
           this.getView().setModel(oSkillModel, "empSkills");
