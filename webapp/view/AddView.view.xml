@@ -1,14 +1,16 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-          xmlns="sap.m"
-          xmlns:form="sap.ui.layout.form"
-          xmlns:f="sap.ui.layout.form"
-          controllerName="sapips.training.employeeapp.controller.AddView">
+ <mvc:View 
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:form="sap.ui.layout.form"
+        xmlns:f="sap.ui.layout.form"
+        controllerName="sapips.training.employeeapp.controller.AddView">
+
     <Page id="addPage" 
           title="{i18n>title}" 
           showNavButton="true"
           navButtonPress="onBack">
         <VBox id="idVBox" class="sapUiSmallMargin">
-            <!-- SimpleForm Layout with ResponsiveGridLayout -->
             <form:SimpleForm id="employeeForm" 
                              editable="true" 
                              layout="ResponsiveGridLayout" 
@@ -39,43 +41,72 @@
                     <Label id="idLblAge" text="{i18n>age}" required="true"/>
                     <Input id="idInptAge" value="{/Employee/Age}" type="Number" maxLength="2" liveChange="onAgeLiveChange" />
 
-                    <Label id="idLblDate" text="{i18n>dateHire}" required="true"/>
-                    <DatePicker id="idDateHire"
+                    <Label id="idLblDate" text="Date of Hire" required="true"/>
+                    <DatePicker 
+                        id="idDateHire"
                         value="{/date}"        
                         required="true"
                         displayFormat="MMM dd, yyyy"
-                        change="onDateChange"
                         valueFormat="yyyy-MM-dd"/>
 
-                <Label id="idLblCareer" text="{i18n>careerLevel}" required="true"/>
+                <Label id="idLblCareer" text="{i18n>careerLevel}" required="true" />
                     <ComboBox
-                        id="idCombocareer"
-                        selectedKey="{/Employee/CareerLevel}"
-                        change="handleChange">
-                        
+                        id="idComboCareer"
+                        change="onCareerLvlChange"
+                        items="{path: 'career>/' }"
+                        placeholder="Please enter a value">
+                            <core:Item id="itemCareerLvl" key="{career>CareerId}" text="{career>CareerLevel}" />
                     </ComboBox>
-                    <Label id="idLblCurrentP" text="{i18n>currentProject}" required="true"/>
+
+                    <Label id="idLblCurrentP" text="{i18n>currentProject}" required="true" />
                     <ComboBox
                         id="idComboCurrentP"
-                        selectedKey="{/Employee/CurrentProject}"
-                        change="handleChange">
-                   
+                        change="onProjListChange"
+                        items="{path: 'project>/' }"
+                        placeholder="Please enter a value">
+                            <core:Item id="itemProjectList" key="{project>ProjectId}" text="{project>ProjectName}"/>
                     </ComboBox>
+             </f:content>
+            </form:SimpleForm> 
 
+           <HBox id="hBox" alignItems="Center" justifyContent="SpaceBetween">
+                <Title id="skillTitle" text="{i18n>skillTitle}" level="H2" />
+                <HBox id="actionButtons" alignItems="Center" justifyContent="End" renderType="Bare">
+                    <Button id="buttonAdd" text="{i18n>btnAdd}" press="onAdd" class="sapUiSmallMarginBegin" />
+                    <Button id="buttonDelete" text="{i18n>btnDelete}" type="Reject" press="onDeleteSkill" class="sapUiSmallMarginBegin" />
+                </HBox>
+            </HBox>
+            <Table id="skillsTable" mode="MultiSelect" items="{skillsTableModel>/skills}">
+            <columns>
+                <Column id="colSkill"><Text id="textSkill" text="{i18n>colSkill}" /></Column>
+                <Column id="colProf"><Text id="textProf" text="{i18n>colProf}" /></Column>
+            </columns>
+            <items>
+                <ColumnListItem id="colList">
+                    <cells>
+                        <Text id="skillId" text="{skillsTableModel>SkillName}" />
+                        <Text id="profId" text="{skillsTableModel>ProficiencyLevel}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
 
-                </f:content>
-            </form:SimpleForm>  
+            
+
         </VBox>
+
+
          <footer>
             <OverflowToolbar id="otbFooter">
-                <Button id="buttonSave" text="{i18n>save}">
+                <ToolbarSpacer/>
+                <Button text="{i18n>save}">
                     <layoutData>
-                        <OverflowToolbarLayoutData id="Overflow1" priority="NeverOverflow"/>
+                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
                     </layoutData>
                 </Button>
-                <Button id="buttonCancel" text="{i18n>cancel}">
+                <Button text="{i18n>cancel}">
                     <layoutData>
-                        <OverflowToolbarLayoutData id="Overflow2" priority="NeverOverflow"/>
+                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
                     </layoutData>
                 </Button>
             </OverflowToolbar>
