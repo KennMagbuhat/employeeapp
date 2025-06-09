@@ -1,82 +1,18 @@
 [
     {
-        "CareerId": "ZPTfPIyFxm",
-        "CareerLevel": "C1"
-    },
-    {
-        "CareerId": "jeBOVAqRua",
-        "CareerLevel": "C2"
-    },
-    {
-        "CareerId": "MnKborOlAQ",
-        "CareerLevel": "C3"
-    },
-    {
-        "CareerId": "OjovvkORCw",
-        "CareerLevel": "C4"
-    },
-    {
-        "CareerId": "zBfVxVdbIo",
-        "CareerLevel": "C5"
-    },
-    {
-        "CareerId": "dFObBAnWbw",
-        "CareerLevel": "C6"
-    },
-    {
-        "CareerId": "ZTEIlYHcou",
-        "CareerLevel": "C7"
-    },
-    {
-        "CareerId": "biGcvNJllN",
-        "CareerLevel": "C8"
-    },
-    {
-        "CareerId": "AsvCeIhZCi",
-        "CareerLevel": "C9"
-    },
-    {
-        "CareerId": "xexNNOFPeR",
-        "CareerLevel": "10"
-    },
-    {
-        "CareerId": "TUDLyGlpqG",
-        "CareerLevel": "11"
-    },
-    {
-        "CareerId": "mlDPvnuNaR",
+        "CareerId": "12",
         "CareerLevel": "12"
     },
     {
-        "CareerId": "cRScHkGDCn",
-        "CareerLevel": "13"
+        "CareerId": "11",
+        "CareerLevel": "11"
     },
     {
-        "CareerId": "huDVNbJJkX",
-        "CareerLevel": "14"
+        "CareerId": "10",
+        "CareerLevel": "10"
     },
     {
-        "CareerId": "xwzIEGvoiH",
-        "CareerLevel": "15"
-    },
-    {
-        "CareerId": "RBIBinNiWP",
-        "CareerLevel": "16"
-    },
-    {
-        "CareerId": "skeyeiuYBN",
-        "CareerLevel": "17"
-    },
-    {
-        "CareerId": "nAkXNbrHvy",
-        "CareerLevel": "18"
-    },
-    {
-        "CareerId": "zmFXQnfRZX",
-        "CareerLevel": "19"
-    },
-    {
-        "CareerId": "ubLUqnsqyR",
-        "CareerLevel": "20"
+        "CareerId": "9",
+        "CareerLevel": "9"
     }
 ]
