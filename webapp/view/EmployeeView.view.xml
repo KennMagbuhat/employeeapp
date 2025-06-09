@@ -2,7 +2,7 @@
     <Page id="viewEmployeePage" title="{i18n>title}">
         <Panel id="nameAndCL">
             <VBox id="nameClVbox">
-                <Title id="nameEmp" text="{/0>/FirstName} {/0>/LastName}"/>
+                <Title id="nameEmp" text="{FirstName} {LastName}"/>
                 <Text id="clEmp" text="{i18n>cLViewEmployee}"/>
             </VBox>
         </Panel>
@@ -32,7 +32,7 @@
                             <items>
                                 <ColumnListItem id="employeeSkillRow">
                                     <cells>
-                                        <Text id="skillDetEmpId" text="skeel"/>
+                                        <Text id="skillDetEmpId" text="{/Skill/SkillName}"/>
                                         <Text id="proficiencyDetEmpId" text="2"/>
                                     </cells>
                                 </ColumnListItem>

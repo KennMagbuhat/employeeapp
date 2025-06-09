@@ -1,0 +1,53 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" controllerName="sapips.training.employeeapp.controller.EmployeeView">
+    <Page id="editEmployeePage" title="{i18n>title}">
+        <Panel id="nameAndCLEd">
+            <VBox id="nameClVboxEd">
+                <Title id="nameEmpEd" text="{/0>/FirstName} {/0>/LastName}"/>
+                <Text id="clEmpEd" text="{i18n>cLViewEmployee}"/>
+            </VBox>
+        </Panel>
+        <Panel id="empDetailsAllEd">
+            <IconTabBar id="deetsAndSKillsNavEd" backgroundDesign="Transparent">
+                <items>
+                    <IconTabFilter id="detailsTabEd" text="{i18n>detailsTab}">
+                        <Panel id="empDetailsPanelIdEd" headerText="{i18n>empDetailsTitle}">
+                            <VBox id="detailsListingEd">
+                                <Text id="empIdDetEd" text="{i18n>employeeId}: {EmployeeId}"/>
+                                <Text id="empFnDetEd" text="{i18n>firstName}: {EmployeeId}"/>
+                                <Text id="empLnDetEd" text="{i18n>lastName}: {EmployeeId}"/>
+                                <Text id="empAgeDetEd" text="{i18n>age}: {EmployeeId}"/>
+                                <Text id="empHDateDetEd" text="{i18n>dateOfHire}: {EmployeeId}"/>
+                                <Text id="empClDetEd" text="{i18n>careerLevel}: {EmployeeId}"/>
+                                <Text id="empCpDetEd" text="{i18n>currentProject}: {EmployeeId}"/>
+                            </VBox>
+                        </Panel>
+                    </IconTabFilter>
+                    <IconTabFilter id="skillsTabEd" text="{i18n>skillsTab}">
+                        <Title id="skillsTableTitleIdEd" text="{i18n>skillsTab}"></Title>
+                        <Table id="skillsTableEmpViewEd" items="{path : '/'}">
+                            <columns>
+                                 <Column id="colSKillsIdEd"><Text id="txtHeaderSkillsIdEd" text="{i18n>skillsCol}"/></Column>
+                                 <Column id="colProficiencyIdEd"><Text id="txtHeaderProficiencyIdEd" text="{i18n>proficiencyCol}"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="employeeSkillRowEd">
+                                    <cells>
+                                        <Text id="skillDetEmpIdEd" text="skeel"/>
+                                        <Text id="proficiencyDetEmpIdEd" text="2"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </Panel>
+        <footer>
+            <OverflowToolbar id="editEmpOft">
+                <ToolbarSpacer id="editEmpOftbs"/>
+                <Button id="saveButtonId" text="{i18n>edit}" type="Emphasized"/>
+                <Button id="editEmpCancelButtonId" text="{i18n>cancel}" press="onCancel"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
