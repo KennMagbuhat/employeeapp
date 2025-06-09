@@ -91,9 +91,18 @@ sap.ui.define([
             oBinding.filter(aFilters);
         },
         
-        onViewEmployeePage: function () {
+        onViewEmployeePage: function (oEvent) {
+            const oTable = this.getView().byId("employeeTable");
+            const oItems = oTable.getBinding("items");
+
+            let source = oEvent.getSource().getId();
+            let idx = source.charAt(source.length -1);
+            let eid = oItems.oList[idx].EmployeeID;
+    
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("RouteEmployeeView");
+            oRouter.navTo("RouteEmployeeView",{
+                employeeID: eid
+            });
           }
     });
 });
