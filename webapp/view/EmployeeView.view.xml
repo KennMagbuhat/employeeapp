@@ -1,70 +1,53 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-          xmlns="sap.m"
-          xmlns:form="sap.ui.layout.form"
-          xmlns:f="sap.ui.layout.form"
-          controllerName="sapips.training.employeeapp.controller.EmployeeView">
-    <Page id="addPage1" 
-          title="{i18n>title}" 
-          showNavButton="true"
-          navButtonPress="onBack">
-        <VBox id="idVBox1" class="sapUiSmallMargin">
-            <!-- SimpleForm Layout with ResponsiveGridLayout -->
-            <form:SimpleForm id="employeeForm1" 
-                             editable="true" 
-                             layout="ResponsiveGridLayout" 
-                             title="{i18n>titleEmployee}" 
-                             labelSpanXL="3" 
-                             labelSpanL="3" 
-                             labelSpanM="3" 
-                             labelSpanS="12" 
-                             adjustLabelSpan="false" 
-                             emptySpanXL="4" 
-                             emptySpanL="4" 
-                             emptySpanM="4" 
-                             emptySpanS="0" 
-                             columnsXL="1" 
-                             columnsL="1" 
-                             columnsM="1" 
-                             singleContainerFullSize="false">
-                <f:content>
-                    <Label id="idLblEId1" text="{i18n>employeeId}" required="false"/>
-                    <Input id="idInptEId1" value="{/Employee/EmployeeID}" type="Text" maxLength="50" editable="false"/>
-                    
-                    <Label id="idLblFName1" text="{i18n>firstName}" required="true"/>
-                    <Input id="idInptFName1" value="{/Employee/FirstName}" type="Text" maxLength="32" liveChange="onFNameLiveChange"/>
-
-                    <Label id="idLblLName1" text="{i18n>lastName}" required="true"/>
-                    <Input id="idInptLName1" value="{/Employee/LastName}" type="Text" maxLength="32" liveChange="onLNameLiveChange"/>
-                    
-                    <Label id="idLblAge1" text="{i18n>age}" required="true"/>
-                    <Input id="idInptAge1" value="{/Employee/Age}" type="Number" maxLength="2" liveChange="onAgeLiveChange" />
-
-                    <Label id="idLblDate1" text="{i18n>dateHire}" required="true"/>
-                    <DatePicker id="idDateHire1"
-                        value="{/date}"        
-                        required="true"
-                        displayFormat="MMM dd, yyyy"
-                        change="onDateChange"
-                        valueFormat="yyyy-MM-dd"/>
-
-                <Label id="idLblCareer1" text="{i18n>careerLevel}" required="true"/>
-                    <ComboBox
-                        id="idCombocareer1"
-                        selectedKey="{/Employee/CareerLevel}"
-                        change="handleChange">
-                        
-                    </ComboBox>
-                    <Label id="idLblCurrentP1" text="{i18n>currentProject}" required="true"/>
-                    <ComboBox
-                        id="idComboCurrentP1"
-                        selectedKey="{/Employee/CurrentProject}"
-                        change="handleChange">
-                   
-                    </ComboBox>
-
-
-                </f:content>
-            </form:SimpleForm>  
-        </VBox>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" controllerName="sapips.training.employeeapp.controller.EmployeeView">
+    <Page id="viewEmployeePage" title="{i18n>title}">
+        <Panel id="nameAndCL">
+            <VBox id="nameClVbox">
+                <Title id="nameEmp" text="{empList>/FirstName} {empList>/LastName}"/>
+                <Text id="clEmp" text="{i18n>cLViewEmployee}"/>
+            </VBox>
+        </Panel>
+        <Panel id="empDetailsAll">
+            <IconTabBar id="deetsAndSKillsNav" backgroundDesign="Transparent">
+                <items>
+                    <IconTabFilter id="detailsTab" text="{i18n>detailsTab}">
+                        <Panel id="empDetailsPanelId" headerText="{i18n>empDetailsTitle}">
+                            <VBox id="detailsListing">
+                                <Text id="empIdDet" text="{i18n>employeeId}: {EmployeeId}"/>
+                                <Text id="empFnDet" text="{i18n>firstName}: {FirstName}"/>
+                                <Text id="empLnDet" text="{i18n>lastName}: {LastName}"/>
+                                <Text id="empAgeDet" text="{i18n>age}: {Age}"/>
+                                <Text id="empHDateDet" text="{i18n>dateOfHire}: {DateHire}"/>
+                                <Text id="empClDet" text="{i18n>careerLevel}: {CareerLevel}"/>
+                                <Text id="empCpDet" text="{i18n>currentProject}: {CurrentProject}"/>
+                            </VBox>
+                        </Panel>
+                    </IconTabFilter>
+                    <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
+                        <Title id="skillsTableTitleId" text="{i18n>skillsTab}"></Title>
+                        <Table id="skillsTableEmpView">
+                            <columns>
+                                 <Column id="colSKillsId"><Text id="txtHeaderSkillsId" text="{i18n>skillsCol}"/></Column>
+                                 <Column id="colProficiencyId"><Text id="txtHeaderProficiencyId" text="{i18n>proficiencyCol}"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem id="employeeSkillRow">
+                                    <cells>
+                                        <Text id="skillDetEmpId" text="{/Skill/SkillName}"/>
+                                        <Text id="proficiencyDetEmpId" text="2"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </Panel>
+        <footer>
+            <OverflowToolbar id="viewEmpOft">
+                <ToolbarSpacer id="viewEmpOftbs"/>
+                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized"/>
+                <Button id="viewEmpCancelButtonId" text="{i18n>cancel}" press="onCancel"/>
+            </OverflowToolbar>
+        </footer>
     </Page>
 </mvc:View>

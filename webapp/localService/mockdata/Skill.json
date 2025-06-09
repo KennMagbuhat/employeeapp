@@ -1,142 +1,86 @@
 [
     {
-        "SkillId": "RaZqOoImHb",
-        "EmployeeID": "EmployeeI1",
-        "ProficiencyID": "P1",
-        "SkillName": "SkillName1",
-        "ProficiencyLevel": "P1"
+        "EmployeeId": "000429",
+        "SkillId": "001",
+        "ProficiencyID": "001",
+        "SkillName": "SAP ABAP",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "bMQlAhoWNU",
-        "EmployeeID": "EmployeeI2",
-        "ProficiencyID": "P2",
-        "SkillName": "SkillName2",
-        "ProficiencyLevel": "P2"
+        "EmployeeId": "000429",
+        "SkillId": "002",
+        "ProficiencyID": "001",
+        "SkillName": "SAP UI5",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "ppSkaVCADK",
-        "EmployeeID": "EmployeeI3",
-        "ProficiencyID": "P3",
-        "SkillName": "SkillName3",
-        "ProficiencyLevel": "P3"
+        "EmployeeId": "000429",
+        "SkillId": "003",
+        "ProficiencyID": "002",
+        "SkillName": "SAP Finance",
+        "ProficiencyLevel": "02"
     },
     {
-        "SkillId": "ELTpfWRIum",
-        "EmployeeID": "EmployeeI4",
-        "ProficiencyID": "P4",
-        "SkillName": "SkillName4",
-        "ProficiencyLevel": "P4"
+        "EmployeeId": "000430",
+        "SkillId": "001",
+        "ProficiencyID": "001",
+        "SkillName": "SAP ABAP",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "uteRZcmDlO",
-        "EmployeeID": "EmployeeI5",
-        "ProficiencyID": "P5",
-        "SkillName": "SkillName5",
-        "ProficiencyLevel": "P5"
+        "EmployeeId": "000430",
+        "SkillId": "002",
+        "ProficiencyID": "001",
+        "SkillName": "SAP UI5",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "fcjasFMxbF",
-        "EmployeeID": "EmployeeI6",
-        "ProficiencyID": "P6",
-        "SkillName": "SkillName6",
-        "ProficiencyLevel": "P6"
+        "EmployeeId": "000430",
+        "SkillId": "004",
+        "ProficiencyID": "002",
+        "SkillName": "SAP HR",
+        "ProficiencyLevel": "02"
     },
     {
-        "SkillId": "aneWiUXDup",
-        "EmployeeID": "EmployeeI7",
-        "ProficiencyID": "P7",
-        "SkillName": "SkillName7",
-        "ProficiencyLevel": "P7"
+        "EmployeeId": "000430",
+        "SkillId": "005",
+        "ProficiencyID": "002",
+        "SkillName": "Workflow",
+        "ProficiencyLevel": "02"
     },
     {
-        "SkillId": "aSSLTeWZvi",
-        "EmployeeID": "EmployeeI8",
-        "ProficiencyID": "P8",
-        "SkillName": "SkillName8",
-        "ProficiencyLevel": "P8"
+        "EmployeeId": "000431",
+        "SkillId": "001",
+        "ProficiencyID": "001",
+        "SkillName": "SAP ABAP",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "booBdarvhK",
-        "EmployeeID": "EmployeeI9",
-        "ProficiencyID": "P9",
-        "SkillName": "SkillName9",
-        "ProficiencyLevel": "P9"
+        "EmployeeId": "000431",
+        "SkillId": "002",
+        "ProficiencyID": "001",
+        "SkillName": "SAP UI5",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "zCqvZvGEjj",
-        "EmployeeID": "Employee10",
-        "ProficiencyID": "10",
-        "SkillName": "SkillName10",
-        "ProficiencyLevel": "10"
+        "EmployeeId": "000431",
+        "SkillId": "003",
+        "ProficiencyID": "001",
+        "SkillName": "SAP Finance",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "lltEuguaIL",
-        "EmployeeID": "Employee11",
-        "ProficiencyID": "11",
-        "SkillName": "SkillName11",
-        "ProficiencyLevel": "11"
+        "EmployeeId": "000432",
+        "SkillId": "001",
+        "ProficiencyID": "001",
+        "SkillName": "SAP ABAP",
+        "ProficiencyLevel": "01"
     },
     {
-        "SkillId": "MSMLRUhWXj",
-        "EmployeeID": "Employee12",
-        "ProficiencyID": "12",
-        "SkillName": "SkillName12",
-        "ProficiencyLevel": "12"
-    },
-    {
-        "SkillId": "aaKycQReAx",
-        "EmployeeID": "Employee13",
-        "ProficiencyID": "13",
-        "SkillName": "SkillName13",
-        "ProficiencyLevel": "13"
-    },
-    {
-        "SkillId": "nXIZQEreFd",
-        "EmployeeID": "Employee14",
-        "ProficiencyID": "14",
-        "SkillName": "SkillName14",
-        "ProficiencyLevel": "14"
-    },
-    {
-        "SkillId": "qwjBkSeqLE",
-        "EmployeeID": "Employee15",
-        "ProficiencyID": "15",
-        "SkillName": "SkillName15",
-        "ProficiencyLevel": "15"
-    },
-    {
-        "SkillId": "QpTnNOqwYl",
-        "EmployeeID": "Employee16",
-        "ProficiencyID": "16",
-        "SkillName": "SkillName16",
-        "ProficiencyLevel": "16"
-    },
-    {
-        "SkillId": "CYQhGcDLvH",
-        "EmployeeID": "Employee17",
-        "ProficiencyID": "17",
-        "SkillName": "SkillName17",
-        "ProficiencyLevel": "17"
-    },
-    {
-        "SkillId": "cwHGUhCifV",
-        "EmployeeID": "Employee18",
-        "ProficiencyID": "18",
-        "SkillName": "SkillName18",
-        "ProficiencyLevel": "18"
-    },
-    {
-        "SkillId": "cNMwFrYRxd",
-        "EmployeeID": "Employee19",
-        "ProficiencyID": "19",
-        "SkillName": "SkillName19",
-        "ProficiencyLevel": "19"
-    },
-    {
-        "SkillId": "oQcFBEhRfZ",
-        "EmployeeID": "Employee20",
-        "ProficiencyID": "20",
-        "SkillName": "SkillName20",
-        "ProficiencyLevel": "20"
+        "EmployeeId": "000422",
+        "SkillId": "001",
+        "ProficiencyID": "001",
+        "SkillName": "SAP ABAP",
+        "ProficiencyLevel": "01"
     }
 ]

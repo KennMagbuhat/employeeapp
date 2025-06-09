@@ -90,14 +90,17 @@ sap.ui.define([
         },
         
         onViewEmployeePage: function (oEvent) {
-            var oItem = oEvent.getSource().getParent();
-            var oContext = oItem.getBindingContext();
-            var sEmployeeID = oContext.getProperty("EmployeeID");
-          
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("employeePage", {
-              employeeId: sEmployeeID
+            const oTable = this.getView().byId("employeeTable");
+            const oItems = oTable.getBinding("items");
+
+            let source = oEvent.getSource().getId();
+            let idx = source.charAt(source.length -1);
+            let eid = oItems.oList[idx].EmployeeID;
+    
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteEmployeeView",{
+                employeeID: eid
             });
-git add controller/MainView.controller.js manifest.json          }
+          }
     });
 });
