@@ -78,5 +78,17 @@
     {
         "ProficiencyId": "cdwAbSfWmC",
         "ProficiencyLevel": "20"
+    },
+    {
+        "ProficiencyId": "001",
+        "ProficiencyLevel": "01"
+    },
+    {
+        "ProficiencyId": "002",
+        "ProficiencyLevel": "02"
+    },
+    {
+        "ProficiencyId": "003",
+        "ProficiencyLevel": "03"
     }
 ]

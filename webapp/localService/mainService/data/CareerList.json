@@ -78,5 +78,21 @@
     {
         "CareerId": "ubLUqnsqyR",
         "CareerLevel": "20"
+    },
+    {
+        "CareerId": "12",
+        "CareerLevel": "12"
+    },
+    {
+        "CareerId": "11",
+        "CareerLevel": "11"
+    },
+    {
+        "CareerId": "10",
+        "CareerLevel": "10"
+    },
+    {
+        "CareerId": "9",
+        "CareerLevel": "9"
     }
 ]
