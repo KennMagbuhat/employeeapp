@@ -68,15 +68,14 @@
         </VBox>
          <footer>
             <OverflowToolbar id="otbFooter">
-                <ToolbarSpacer/>
-                <Button text="{i18n>save}">
+                <Button id="buttonSave" text="{i18n>save}">
                     <layoutData>
-                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                        <OverflowToolbarLayoutData id="Overflow1" priority="NeverOverflow"/>
                     </layoutData>
                 </Button>
-                <Button text="{i18n>cancel}">
+                <Button id="buttonCancel" text="{i18n>cancel}">
                     <layoutData>
-                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                        <OverflowToolbarLayoutData id="Overflow2" priority="NeverOverflow"/>
                     </layoutData>
                 </Button>
             </OverflowToolbar>

@@ -1,0 +1,70 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:form="sap.ui.layout.form"
+          xmlns:f="sap.ui.layout.form"
+          controllerName="sapips.training.employeeapp.controller.EmployeeView">
+    <Page id="addPage1" 
+          title="{i18n>title}" 
+          showNavButton="true"
+          navButtonPress="onBack">
+        <VBox id="idVBox1" class="sapUiSmallMargin">
+            <!-- SimpleForm Layout with ResponsiveGridLayout -->
+            <form:SimpleForm id="employeeForm1" 
+                             editable="true" 
+                             layout="ResponsiveGridLayout" 
+                             title="{i18n>titleEmployee}" 
+                             labelSpanXL="3" 
+                             labelSpanL="3" 
+                             labelSpanM="3" 
+                             labelSpanS="12" 
+                             adjustLabelSpan="false" 
+                             emptySpanXL="4" 
+                             emptySpanL="4" 
+                             emptySpanM="4" 
+                             emptySpanS="0" 
+                             columnsXL="1" 
+                             columnsL="1" 
+                             columnsM="1" 
+                             singleContainerFullSize="false">
+                <f:content>
+                    <Label id="idLblEId1" text="{i18n>employeeId}" required="false"/>
+                    <Input id="idInptEId1" value="{/Employee/EmployeeID}" type="Text" maxLength="50" editable="false"/>
+                    
+                    <Label id="idLblFName1" text="{i18n>firstName}" required="true"/>
+                    <Input id="idInptFName1" value="{/Employee/FirstName}" type="Text" maxLength="32" liveChange="onFNameLiveChange"/>
+
+                    <Label id="idLblLName1" text="{i18n>lastName}" required="true"/>
+                    <Input id="idInptLName1" value="{/Employee/LastName}" type="Text" maxLength="32" liveChange="onLNameLiveChange"/>
+                    
+                    <Label id="idLblAge1" text="{i18n>age}" required="true"/>
+                    <Input id="idInptAge1" value="{/Employee/Age}" type="Number" maxLength="2" liveChange="onAgeLiveChange" />
+
+                    <Label id="idLblDate1" text="{i18n>dateHire}" required="true"/>
+                    <DatePicker id="idDateHire1"
+                        value="{/date}"        
+                        required="true"
+                        displayFormat="MMM dd, yyyy"
+                        change="onDateChange"
+                        valueFormat="yyyy-MM-dd"/>
+
+                <Label id="idLblCareer1" text="{i18n>careerLevel}" required="true"/>
+                    <ComboBox
+                        id="idCombocareer1"
+                        selectedKey="{/Employee/CareerLevel}"
+                        change="handleChange">
+                        
+                    </ComboBox>
+                    <Label id="idLblCurrentP1" text="{i18n>currentProject}" required="true"/>
+                    <ComboBox
+                        id="idComboCurrentP1"
+                        selectedKey="{/Employee/CurrentProject}"
+                        change="handleChange">
+                   
+                    </ComboBox>
+
+
+                </f:content>
+            </form:SimpleForm>  
+        </VBox>
+    </Page>
+</mvc:View>

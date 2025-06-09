@@ -10,8 +10,6 @@ sap.ui.define([
 
     return Controller.extend("sapips.training.employeeapp.controller.MainView", {
         onInit() {
-            var oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
-            this.getView().setModel(oModel);  // default model
         },
         onAdd: function () {
             var oBundle = this.getView().getModel("i18n").getResourceBundle();
@@ -65,22 +63,55 @@ sap.ui.define([
             var aFilters = [];
         
             if (sQuery) {
-                const isNumeric = !isNaN(sQuery);
-        
-                const aInnerFilters = [
-                    new sap.ui.model.Filter("EmployeeID", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("FirstName", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("LastName", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("DateHire", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("CareerLevel", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("CurrentProject", sap.ui.model.FilterOperator.Contains, sQuery)
-                ];
-        
-                if (isNumeric) {
-                    aInnerFilters.push(
-                        new sap.ui.model.Filter("Age", sap.ui.model.FilterOperator.EQ, parseInt(sQuery, 10))
-                    );
+                let nNumericValue;
+                    if (!isNaN(sValue)) {
+                    nNumericValue = parseInt(sValue);
                 }
+
+                let aInnerFilters = [
+                    new Filter({
+                        path: 'EmployeeId',
+                        operator: sap.ui.model.FilterOperator.Contains,
+                        value1: sValue,
+                        caseSensitive: true
+                    }),
+                    new Filter({
+                        path: 'FirstName',
+                        operator: sap.ui.model.FilterOperator.Contains,
+                        value1: sValue,
+                        caseSensitive: false
+                    }),
+                    new Filter({
+                        path: 'LastName',
+                        operator: sap.ui.model.FilterOperator.Contains,
+                        value1: sValue,
+                        caseSensitive: false
+                    }),
+                    new Filter({
+                        path: 'Age',
+                        operator: sap.ui.model.FilterOperator.EQ,
+                        value1: nNumericValue,
+                        caseSensitive: false
+                    }),
+                    new Filter({
+                        path: 'DateHire',
+                        operator: sap.ui.model.FilterOperator.Contains,
+                        value1: sValue,
+                        caseSensitive: false
+                    }),
+                    new Filter({
+                        path: 'CareerLevel',
+                        operator: sap.ui.model.FilterOperator.Contains,
+                        value1: sValue,
+                        caseSensitive: false
+                    }),
+                    new Filter({
+                        path: 'CurrentProject',
+                        operator: sap.ui.model.FilterOperator.Contains,
+                        value1: sValue,
+                        caseSensitive: false
+                    })
+                ];
         
                 aFilters.push(new sap.ui.model.Filter({
                     filters: aInnerFilters,
