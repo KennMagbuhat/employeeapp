@@ -56,7 +56,7 @@
         <footer>
             <OverflowToolbar id="viewEmpOft">
                 <ToolbarSpacer id="viewEmpOftbs" />
-                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized" />
+                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized" press="onToEdit" />
                 <Button id="viewEmpCancelButtonId" text="{i18n>cancel}" press="onCancel" />
             </OverflowToolbar>
         </footer>
