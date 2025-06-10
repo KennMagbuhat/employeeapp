@@ -17,7 +17,7 @@
         <Key>
           <PropertyRef Name="ProjectId" />
         </Key>
-        <Property Name="ProjectId" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="ProjectId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="ProjectName" Type="Edm.String" MaxLength="40" Nullable="true"/>
       </EntityType>
       <EntityType Name="Skill">

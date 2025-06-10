@@ -125,13 +125,16 @@ sap.ui.define([
             const sCareerLevelKey = oCareerCombo.getSelectedKey();
             const sCurrentProjectKey = oProjectCombo.getSelectedKey();
 
+            const sToday = new Date();
+            const sDate = String(sToday.getDate()).padStart(2, '0');      
+            const sMonth = String(sToday.getMonth() + 1).padStart(2, '0'); 
+
             const aSkills = oView.getModel("skillsTableModel").getProperty("/skills") || [];
 
             if (!sFirstName && !sLastName && !sAge && !sDateHire && !sCareerLevelKey && !sCurrentProjectKey && aSkills.length === 0) {
                 MessageToast.show(oBundle.getText("allFields"));
                 return;
             }
-
             if (!sFirstName) {
                 MessageToast.show(oBundle.getText("inputFname"));
                 return;
@@ -140,7 +143,7 @@ sap.ui.define([
                 MessageToast.show(oBundle.getText("inputLName"));
                 return;
             }
-            if (!sAge || isNaN(sAge) || Number(sAge) <= 0) {
+            if (!sAge || isNaN(sAge) || Number(sAge) <= 0 ) {
                 MessageToast.show(oBundle.getText("inputAge"));
                 return;
             }
@@ -161,8 +164,13 @@ sap.ui.define([
                 return;
             }
 
+            if (Number(sAge) < 0 || Number(sAge) > 90) {
+                MessageToast.show(oBundle.getText("ageValidation"));
+                return;
+            }
+
             const oNewEmployee = {
-                EmployeeID: "EID_" + Date.now(),
+                EmployeeID: "EID_" + sFirstName + sLastName + sDate + sMonth,
                 FirstName: sFirstName,
                 LastName: sLastName,
                 Age: Number(sAge),
@@ -213,6 +221,48 @@ sap.ui.define([
             } else {
                 this.getOwnerComponent().getRouter().navTo("RouteMainView", {}, true);
             }
-        }
+        },
+        onAgeLiveChange: function (oEvent) {
+            var oInput = oEvent.getSource();
+            var sValue = oEvent.getParameter("value");
+            var sCleanValue = sValue.replace(/\D/g, '').substring(0, 2);
+       
+            if (sValue !== sCleanValue) {
+                oInput.setValue(sCleanValue);
+            }
+       
+            if (sCleanValue.length > 0 && parseInt(sCleanValue, 10) > 90) {
+                oInput.setValueState("Warning");
+                oInput.setValueStateText("Age must be between 0 and 90.");
+            } else {
+                oInput.setValueState("None");
+            }
+        },
+        onFNameLiveChange: function (oEvent) {
+            var oInput = oEvent.getSource();
+            var sValue = oEvent.getParameter("value");
+            var sFiltered = sValue.replace(/[^a-zA-Z]/g, '');
+ 
+            if (sValue !== sFiltered) {
+                oInput.setValue(sFiltered);
+                oInput.setValueState("Warning");
+                oInput.setValueStateText("Only alphabetical characters (A-Z, a-z) are allowed.");
+            } else {
+                oInput.setValueState("None");
+            }
+        },
+        onLNameLiveChange: function (oEvent) {
+            var oInput = oEvent.getSource();
+            var sValue = oEvent.getParameter("value");
+            var sFiltered = sValue.replace(/[^a-zA-Z]/g, '');
+ 
+            if (sValue !== sFiltered) {
+                oInput.setValue(sFiltered);
+                oInput.setValueState("Warning");
+                oInput.setValueStateText("Only alphabetical characters (A-Z, a-z) are allowed.");
+            } else {
+                oInput.setValueState("None");
+            }
+        },
     });
 });

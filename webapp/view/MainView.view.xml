@@ -25,7 +25,7 @@
                     <Column id="colHireDate"><Text id="txtHeaderHireDate" text="{i18n>colHireDate}" /></Column>
                     <Column id="colCareerLevel"><Text id="txtHeaderCareerLevel" text="{i18n>colCareerLevel}" /></Column>
                     <Column id="colProject"><Text id="txtHeaderProject" text="{i18n>colProject}" /></Column>
-                    <Column id="colNavButton" width="5rem"><Text id="txtNavButton" text=" " /></Column>
+                    <Column id="colNavButton" width="5rem"><Text id="txtNavButton"/></Column>
                 </columns>
 
                 <items>
