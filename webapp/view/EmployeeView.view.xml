@@ -7,7 +7,7 @@
         <Panel id="nameAndCL">
             <VBox id="nameClVbox">
                 <Title id="nameEmp" text="{FirstName} {LastName}" />
-                <Text id="clEmp" text="{i18n>cLViewEmployee}" />
+                <Text id="clEmp" text="{i18n>cLViewEmployee} {CareerLevel}" />
             </VBox>
         </Panel>
  
