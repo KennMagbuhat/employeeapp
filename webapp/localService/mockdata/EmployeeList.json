@@ -1,0 +1,47 @@
+[
+    {
+        "EmployeeID": "000429",
+        "FirstName": "Katherine",
+        "LastName": "Cabrito",
+        "Age": 21,
+        "DateHire": "2023-05-29",
+        "CareerLevel": "12",
+        "CurrentProject": "Shell"
+    },
+    {
+        "EmployeeID": "000430",
+        "FirstName": "Ronnalyn",
+        "LastName": "Reyes",
+        "Age": 21,
+        "DateHire": "2024-11-03",
+        "CareerLevel": "12",
+        "CurrentProject": "Shell"
+    },
+    {
+        "EmployeeID": "000431",
+        "FirstName": "Jerald",
+        "LastName": "Chen",
+        "Age": 24,
+        "DateHire": "2020-10-10",
+        "CareerLevel": "10",
+        "CurrentProject": "Shell"
+    },
+    {
+        "EmployeeID": "000432",
+        "FirstName": "Jeniffer",
+        "LastName": "Ruiz",
+        "Age": 22,
+        "DateHire": "2023-09-26",
+        "CareerLevel": "11",
+        "CurrentProject": "JERA"
+    },
+    {
+        "EmployeeID": "000422",
+        "FirstName": "Kenn",
+        "LastName": "Magbuhat",
+        "Age": 33,
+        "DateHire": "2018-03-23",
+        "CareerLevel": "10",
+        "CurrentProject": "First Energy"
+    }
+]

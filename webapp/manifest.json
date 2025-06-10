@@ -16,8 +16,8 @@
       "toolsId": "efe9e88a-3328-4c8a-a80d-3a77316c0d34"
     },
     "dataSources": {
-      "mainService": {
-        "uri": "/",
+      "EMPLOYEE_SRV": {
+        "uri": "/sap/opu/odata/sap/EMPLOYEE_SRV/",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0",
@@ -63,7 +63,11 @@
         }
       },
       "": {
-        "dataSource": "mainService"
+        "dataSource": "EMPLOYEE_SRV",
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline"
+        }
       }
     },
     "resources": {
@@ -104,7 +108,13 @@
           "name": "RouteEmployeeView",                     
           "pattern": "employee/{employeeID}",     
           "target": [
-            "TargetEmployeeView"
+            "TargetEmployeeView"]
+        },
+        {  
+          "name": "RouteEmployeePage",                     
+          "pattern": "employeePage",     
+          "target": [
+            "TargetEmployeePage"
           ]
         },
         {

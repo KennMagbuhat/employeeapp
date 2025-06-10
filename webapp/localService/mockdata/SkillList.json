@@ -1,0 +1,22 @@
+[
+    {
+        "SkillId": "001",
+        "SkillName": "SAP ABAP"
+    },
+    {
+        "SkillId": "002",
+        "SkillName": "SAP UI5"
+    },
+    {
+        "SkillId": "003",
+        "SkillName": "SAP Finance"
+    },
+    {
+        "SkillId": "004",
+        "SkillName": "SAP HR"
+    },
+    {
+        "SkillId": "005",
+        "SkillName": "Workflow"
+    }
+]

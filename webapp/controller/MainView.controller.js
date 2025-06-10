@@ -1,108 +1,131 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
-    "sap/m/MessageBox",  
-    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], (Controller, MessageToast, MessageBox, JSONModel, Filter, FilterOperator) => {
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/json/JSONModel"
+], function (Controller, MessageToast, MessageBox, Filter, FilterOperator, JSONModel) {
     "use strict";
 
     return Controller.extend("sapips.training.employeeapp.controller.MainView", {
-        onInit() {
-            var oModel = new JSONModel(sap.ui.require.toUrl("sapips/training/employeeapp/localService/mainService/data/EmployeeList.json"));
-            this.getView().setModel(oModel);  // default model
+        onInit: function () {
+            const oTable = this.getView().byId("employeeTable");
+
+            const oViewModel = new JSONModel({
+                employeeTitle: this._generateEmployeeTitle(0)
+            });
+            this.getView().setModel(oViewModel, "viewModel");
+
+            oTable.attachUpdateFinished(() => {
+                this._updateEmployeeCount();
+            });
         },
+
+        _generateEmployeeTitle: function (iCount) {
+            return "Employees (" + iCount + ")";
+        },
+
+        _updateEmployeeCount: function () {
+            const oTable = this.getView().byId("employeeTable");
+            const oBinding = oTable.getBinding("items");
+            const iCount = oBinding ? oBinding.getLength() : 0;
+
+            const oViewModel = this.getView().getModel("viewModel");
+            oViewModel.setProperty("/employeeTitle", this._generateEmployeeTitle(iCount));
+        },
+
         onAdd: function () {
-            var oBundle = this.getView().getModel("i18n").getResourceBundle();
+            const oBundle = this.getView().getModel("i18n").getResourceBundle();
             MessageToast.show(oBundle.getText("msgAddClicked"));
 
-            var oRouter = this.getOwnerComponent().getRouter();
+            const oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("RouteAddView");
         },
 
         onDelete: function () {
-            var oBundle = this.getView().getModel("i18n").getResourceBundle();
             const oTable = this.getView().byId("employeeTable");
-            const oSelectedItems = oTable.getSelectedItems();
+            const aSelectedItems = oTable.getSelectedItems();
+            const oBundle = this.getView().getModel("i18n").getResourceBundle();
 
-            if (oSelectedItems.length === 0) {
-                MessageToast.show(oBundle.getText("msgNoItemSelected"));
+            if (aSelectedItems.length === 0) {
+                MessageToast.show(oBundle.getText("selectOne"));
                 return;
             }
 
-            const aSelectedEmployeeIDs = oSelectedItems.map(item => item.getBindingContext().getObject().EmployeeID);
+            MessageBox.confirm(oBundle.getText("deleteContent"), {
+                title: oBundle.getText("deleteTitle"),
+                actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                emphasizedAction: MessageBox.Action.OK,
+                onClose: (sAction) => {
+                    if (sAction === MessageBox.Action.OK) {
+                        const oModel = this.getView().getModel();
 
-            MessageBox.confirm(
-                oBundle.getText("deleteContent"),
-                {
-                    title: oBundle.getText("deleteTitle"),
-                    onClose: (sAction) => {
-                        if (sAction === MessageBox.Action.OK) {
-                            const oModel = this.getView().getModel();
-                            let aEmployees = oModel.getProperty("/");
+                        aSelectedItems.forEach((oItem) => {
+                            const oContext = oItem.getBindingContext();
+                            const sPath = oContext.getPath();
 
-                            aEmployees = aEmployees.filter(employee => !aSelectedEmployeeIDs.includes(employee.EmployeeID));
+                            oModel.remove(sPath, {
+                                success: () => {
+                                    MessageToast.show(oBundle.getText("deletedSuccess"));
+                                    this._updateEmployeeCount();
+                                },
+                                error: (oError) => {
+                                    MessageToast.show(oBundle.getText("deleteFailed"));
+                                    console.error(oError);
+                                }
+                            });
+                        });
 
-                            oModel.setProperty("/", aEmployees);
-
-                            oTable.removeSelections(true); 
-
-                            MessageToast.show(oBundle.getText("msgDeleteClicked"));
-                        } else {
-                            MessageToast.show(oBundle.getText("msgDeleteCancelled"));
-                        }
+                        oTable.removeSelections(true);
+                    } else {
+                        MessageToast.show(oBundle.getText("deleteCancel"));
                     }
                 }
-            );
+            });
         },
 
         onSearch: function (oEvent) {
             const sQuery = oEvent.getParameter("newValue") || oEvent.getParameter("query");
             const oTable = this.getView().byId("employeeTable");
             const oBinding = oTable.getBinding("items");
-        
-            var aFilters = [];
-        
+
+            let aFilters = [];
+
             if (sQuery) {
                 const isNumeric = !isNaN(sQuery);
-        
+
                 const aInnerFilters = [
-                    new sap.ui.model.Filter("EmployeeID", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("FirstName", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("LastName", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("DateHire", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("CareerLevel", sap.ui.model.FilterOperator.Contains, sQuery),
-                    new sap.ui.model.Filter("CurrentProject", sap.ui.model.FilterOperator.Contains, sQuery)
+                    new Filter("EmployeeID", FilterOperator.Contains, sQuery),
+                    new Filter("FirstName", FilterOperator.Contains, sQuery),
+                    new Filter("LastName", FilterOperator.Contains, sQuery),
+                    new Filter("DateHire", FilterOperator.Contains, sQuery),
+                    new Filter("CareerLevel", FilterOperator.Contains, sQuery),
+                    new Filter("CurrentProject", FilterOperator.Contains, sQuery)
                 ];
-        
+
                 if (isNumeric) {
-                    aInnerFilters.push(
-                        new sap.ui.model.Filter("Age", sap.ui.model.FilterOperator.EQ, parseInt(sQuery, 10))
-                    );
+                    aInnerFilters.push(new Filter("Age", FilterOperator.EQ, parseInt(sQuery, 10)));
                 }
-        
-                aFilters.push(new sap.ui.model.Filter({
+
+                aFilters.push(new Filter({
                     filters: aInnerFilters,
-                    and: false // OR
+                    and: false
                 }));
             }
-        
-            oBinding.filter(aFilters);
-        },
-        
-        onViewEmployeePage: function (oEvent) {
-            const oTable = this.getView().byId("employeeTable");
-            const oItems = oTable.getBinding("items");
 
-            let source = oEvent.getSource().getId();
-            let idx = source.charAt(source.length -1);
-            let eid = oItems.oList[idx].EmployeeID;
-    
-            var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("RouteEmployeeView",{
-                employeeID: eid
+            oBinding.filter(aFilters);
+            this._updateEmployeeCount(); 
+        },
+
+        onViewEmployeePage: function (oEvent) {
+            const oItem = oEvent.getSource().getParent();
+            const sEmployeeID = oItem.getBindingContext().getProperty("EmployeeID");
+
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteEmployeeView", {
+                employeeID: sEmployeeID
             });
-          }
+        }
     });
 });

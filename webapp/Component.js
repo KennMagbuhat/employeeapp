@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "sapips/training/employeeapp/model/models"
-], (UIComponent, models) => {
+    "sapips/training/employeeapp/model/models",
+    "sapips/training/employeeapp/localService/mockserver"
+], (UIComponent, models,mockserver) => {
     "use strict";
 
     return UIComponent.extend("sapips.training.employeeapp.Component", {
@@ -21,6 +22,18 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
-        }
+
+            //Start the mock OData Service
+            this.initializeODataService();
+        },
+            
+        initializeODataService: function () {
+            mockserver.init();
+
+            var oModel = new sap.ui.model.odata.v2.ODataModel({
+                serviceUrl: "/sap/opu/odata/sap/EMPLOYEE_SRV"
+            });
+            this.setModel(oModel);
+      }
     });
 });
