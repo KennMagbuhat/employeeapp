@@ -1,9 +1,16 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" controllerName="sapips.training.employeeapp.controller.EmployeeEditView">
+
+<mvc:View 
+        xmlns:mvc="sap.ui.core.mvc" 
+        xmlns="sap.m" 
+        xmlns:core="sap.ui.core"
+        xmlns:form="sap.ui.layout.form" 
+        xmlns:f="sap.ui.layout.form"
+        controllerName="sapips.training.employeeapp.controller.EmployeeEditView">
     <Page id="editEmployeePage" title="{i18n>title}">
         <Panel id="nameAndCLEd">
             <VBox id="nameClVboxEd">
-                <Title id="nameEmpEd" text="{/0>/FirstName} {/0>/LastName}"/>
-                <Text id="clEmpEd" text="{i18n>cLViewEmployee}"/>
+                <Title id="nameEmpEd" text="{FirstName} {LastName}"/>
+                <Text id="clEmpEd" text="{i18n>cLViewEmployee}: {CareerLevel}"/>
             </VBox>
         </Panel>
         <Panel id="empDetailsAllEd">
@@ -11,44 +18,65 @@
                 <items>
                     <IconTabFilter id="detailsTabEd" text="{i18n>detailsTab}">
                         <Panel id="empDetailsPanelIdEd" headerText="{i18n>empDetailsTitle}">
-                            <form:SimpleForm id="detailsListingEd">
-                                <Label id="empIdDetEd" text="{i18n>employeeId}:"/>
-                                <Input id="empIdDetInput" value="{EmployeeId}"/>
-                                <Label id="empFnDetEd" text="{i18n>firstName}:"/>
-                                <Input id="empFnDetInput" value="{FirstName}"/>
-                                <Label id="empLnDetEd" text="{i18n>lastName}:"/>
-                                <Input id="empLnDetInput" value="{LastName}"/>
-                                <Label id="empAgeDetEd" text="{i18n>age}:"/>
-                                <Input id="empAgeDetInput" value="{Age}"/>
-                                <Label id="empHDateDetEd" text="{i18n>dateOfHire}:"/>
-                                <Input id="empHDateDetInput" value="{DateHire}"/>
-                                <Label id="empClDetEd" text="{i18n>careerLevel}:"/>
-                                <Input id="empClDetInput" value="{CareerLevel}"/>
-                                <Label id="empCpDetEd" text="{i18n>currentProject}:"/>
-                                <Input id="empCurrentDetInput" value="{CurrentProject}"/>
-                            </form:SimpleForm>
+                            <form:SimpleForm id="employeeFormEdit" width="750px">
+                                <f:content>
+                                    <Label id="idLblEIdEdit" text="{i18n>employeeId}" required="false"/>
+                                    <Input id="idInptEIdEdit" value="{EmployeeID}" type="Text" maxLength="50" editable="false"/>
+                                    
+                                    <Label id="idLblFNameEdit" text="{i18n>firstName}" required="true"/>
+                                    <Input id="idInptFNameEdit" value="{FirstName}" type="Text" maxLength="32" liveChange="onFNameLiveChange"/>
+                                    <Label id="idLblLNameEdit" text="{i18n>lastName}" required="true"/>
+                                    <Input id="idInptLNameEdit" value="{LastName}" type="Text" maxLength="32" liveChange="onLNameLiveChange"/>
+                                    
+                                    <Label id="idLblAgeEdit" text="{i18n>age}" required="true"/>
+                                    <Input id="idInptAgeEdit" value="{Age}" type="Number" maxLength="2" liveChange="onAgeLiveChange" />
+                                    <Label id="idLblDateEdit" text="{DateHire}" required="true"/>
+                                    <DatePicker 
+                                        id="idDateHireEdit"       
+                                        required="true"
+                                        displayFormat="MMM dd, yyyy"
+                                        valueFormat="yyyy-MM-dd"
+                                        value="{DateHire}"/>
+                                    <Label id="idLblCareerEdit" text="{i18n>careerLevel}" required="true" />
+                                        <ComboBox
+                                            id="idComboCareerEdit"
+                                            change="onCareerLvlChange"
+                                            items="{path: '/CareerList' }"
+                                            placeholder="{CareerLevel}">
+                                                <core:Item id="itemCareerLvlEdit" key="{CareerId}" text="{CareerLevel}" />
+                                        </ComboBox>
+                                        <Label id="idLblCurrentPEdit" text="{i18n>currentProject}" required="true" />
+                                        <ComboBox
+                                            id="idComboCurrentPEdit"
+                                            change="onProjListChange"
+                                            items="{path: '/ProjectList' }"
+                                            placeholder="{CurrentProject}">
+                                                <core:Item id="itemProjectListEdit" key="{ProjectId}" text="{ProjectName}"/>
+                                        </ComboBox>
+                                </f:content>
+                            </form:SimpleForm> 
                         </Panel>
                     </IconTabFilter>
-                    <IconTabFilter id="skillsTabEd" text="{i18n>skillsTab}">
+                     <IconTabFilter id="skillsTabEd" text="{i18n>skillsTab}">
                         <Title id="skillsTableTitleIdEd" text="{i18n>skillsTab}"></Title>
                         <HBox id="actionButtonsSkillsBox" alignItems="Center" justifyContent="End" renderType="Bare">
-                            <Button id="addSkillButton" text="{i18n>btnAdd}" press="onSkillAdd" class="sapUiSmallMarginBegin" />
-                            <Button id="deleteSkillButton" text="{i18n>btnDelete}" type="Reject" press="onSkillDelete" class="sapUiSmallMarginBegin" />
+                            <Button id="addSkillButton" text="{i18n>btnAdd}" press="onAddSkill" class="sapUiSmallMarginBegin" />
+                            <Button id="deleteSkillButton" text="{i18n>btnDelete}" type="Reject" press="onDeleteSkill" class="sapUiSmallMarginBegin" />
                         </HBox>
-                        <Table id="skillsTableEmpViewEd" items="{path : '/'}">
-                            <columns>
-                                 <Column id="colSKillsIdEd"><Text id="txtHeaderSkillsIdEd" text="{i18n>skillsCol}"/></Column>
-                                 <Column id="colProficiencyIdEd"><Text id="txtHeaderProficiencyIdEd" text="{i18n>proficiencyCol}"/></Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem id="employeeSkillRowEd">
-                                    <cells>
-                                        <Text id="skillDetEmpIdEd" text="skeel"/>
-                                        <Text id="proficiencyDetEmpIdEd" text="2"/>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
+                               <Table id="skillsTableEdit" mode="MultiSelect" items="{skillsTableModel>/skills}">
+                                    <columns>
+                                        <Column id="colSkillEdit"><Text id="textSkillEdit" text="{i18n>colSkill}" /></Column>
+                                        <Column id="colProfEdit"><Text id="textProfEdit" text="{i18n>colProf}" /></Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem id="colListEdit">
+                                            <cells>
+                                                <Text id="skillIdEdit" text="{skillsTableModel>SkillName}" />
+                                                <Text id="profIdEdit" text="{skillsTableModel>ProficiencyLevel}" />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table> 
                     </IconTabFilter>
                 </items>
             </IconTabBar>
@@ -56,7 +84,7 @@
         <footer>
             <OverflowToolbar id="editEmpOft">
                 <ToolbarSpacer id="editEmpOftbs"/>
-                <Button id="updateButtonId" text="{i18n>edit}" type="Emphasized"/>
+                <Button id="updateButtonId" text="{i18n>update}" type="Emphasized" press="onPressUpdate"/>
                 <Button id="editEmpCancelButtonId" text="{i18n>cancel}" press="onCancel"/>
             </OverflowToolbar>
         </footer>

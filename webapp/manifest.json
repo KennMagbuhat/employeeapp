@@ -110,16 +110,9 @@
           "target": [
             "TargetEmployeeView"]
         },
-        {  
-          "name": "RouteEmployeePage",                     
-          "pattern": "employeePage",     
-          "target": [
-            "TargetEmployeePage"
-          ]
-        },
         {
-          "name": "RouteEmployeeEditView",                     
-          "pattern": "employee/{employeeID}",     
+          "name": "RouteEmployeeEditView",
+          "pattern": "{employeeID}",
           "target": [
             "TargetEmployeeEditView"
           ]

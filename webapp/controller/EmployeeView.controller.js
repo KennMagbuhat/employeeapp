@@ -28,6 +28,19 @@ sap.ui.define([
                   }
               }
           });
+          var sSKill = "/Skill('" + sEmployeeID + "')";
+          var oSkillView = this.getView.byID("skillsTableEmpView");
+          oView.bindElement({
+            path: sSKill,
+            events: {
+                dataRequested: function () {
+                    oSkillView.setBusy(true);
+                },
+                dataReceived: function () {
+                    oSkillView.setBusy(false);
+                }
+            }
+        });
       },
 
       onCancel: function () {

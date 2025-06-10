@@ -7,7 +7,7 @@
         <Panel id="nameAndCL">
             <VBox id="nameClVbox">
                 <Title id="nameEmp" text="{FirstName} {LastName}" />
-                <Text id="clEmp" text="{i18n>cLViewEmployee}" />
+                <Text id="clEmp" text="{i18n>cLViewEmployee} {CareerLevel}" />
             </VBox>
         </Panel>
  
@@ -56,7 +56,7 @@
         <footer>
             <OverflowToolbar id="viewEmpOft">
                 <ToolbarSpacer id="viewEmpOftbs" />
-                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized" />
+                <Button id="editButtonId" text="{i18n>edit}" type="Emphasized" press="onToEdit" />
                 <Button id="viewEmpCancelButtonId" text="{i18n>cancel}" press="onCancel" />
             </OverflowToolbar>
         </footer>
