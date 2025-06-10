@@ -227,13 +227,14 @@ sap.ui.define([
             var sValue = oEvent.getParameter("value");
             var sCleanValue = sValue.replace(/\D/g, '').substring(0, 2);
        
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
             if (sValue !== sCleanValue) {
                 oInput.setValue(sCleanValue);
             }
        
             if (sCleanValue.length > 0 && parseInt(sCleanValue, 10) > 90) {
                 oInput.setValueState("Warning");
-                oInput.setValueStateText("Age must be between 0 and 90.");
+                oInput.setValueStateText(oBundle.getText("ageValidation"));
             } else {
                 oInput.setValueState("None");
             }
@@ -243,10 +244,11 @@ sap.ui.define([
             var sValue = oEvent.getParameter("value");
             var sFiltered = sValue.replace(/[^a-zA-Z]/g, '');
  
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
             if (sValue !== sFiltered) {
                 oInput.setValue(sFiltered);
                 oInput.setValueState("Warning");
-                oInput.setValueStateText("Only alphabetical characters (A-Z, a-z) are allowed.");
+                oInput.setValueStateText(oBundle.getText("enterFName"));
             } else {
                 oInput.setValueState("None");
             }
@@ -256,13 +258,50 @@ sap.ui.define([
             var sValue = oEvent.getParameter("value");
             var sFiltered = sValue.replace(/[^a-zA-Z]/g, '');
  
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
             if (sValue !== sFiltered) {
                 oInput.setValue(sFiltered);
                 oInput.setValueState("Warning");
-                oInput.setValueStateText("Only alphabetical characters (A-Z, a-z) are allowed.");
+                oInput.setValueStateText(oBundle.getText("enterLName"));
             } else {
                 oInput.setValueState("None");
             }
         },
+
+        onCareerLvlChange: function (oEvent) {
+            var oComboBox = oEvent.getSource();
+            var sValue = oEvent.getParameter("value");
+            var aItems = oComboBox.getItems();
+       
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
+            var bIsValid = aItems.some(function (oItem) {
+                return oItem.getText() === sValue;
+            });
+       
+            if (!bIsValid) {
+                oComboBox.setValueState("Warning");
+                oComboBox.setValueStateText(oBundle.getText("invCareerLevel"));
+            } else {
+                oComboBox.setValueState("None");
+            }
+        },
+       
+        onProjListChange: function (oEvent) {
+            var oComboBox = oEvent.getSource();
+            var sValue = oEvent.getParameter("value");
+            var aItems = oComboBox.getItems();
+       
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
+            var bIsValid = aItems.some(function (oItem) {
+                return oItem.getText() === sValue;
+            });
+       
+            if (!bIsValid) {
+                oComboBox.setValueState("Warning");
+                oComboBox.setValueStateText(oBundle.getText("invProject")); 
+            } else {
+                oComboBox.setValueState("None");
+            }
+        }        
     });
 });

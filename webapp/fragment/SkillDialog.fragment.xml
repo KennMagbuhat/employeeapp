@@ -8,7 +8,6 @@
         <VBox id="vboxSkill" class="sapUiSmallMargin" renderType="Bare">
             <Label id="labelSkill" text="{i18n>skillLabel}" />
             <ComboBox id="idComboSkill" width="100%" 
-                change="onSkillChange"
                 items="{path: 'skill>/' }"
                 placeholder="Please enter a value">
                 <core:Item id="itemSkill" key="{skill>SkillId}" text="{skill>SkillName}" />
@@ -16,7 +15,6 @@
 
             <Label id="labelProf" text="{i18n>proficiencyLabel}" class="sapUiSmallMarginTop" />
             <ComboBox id="idComboProficient" width="100%"
-                change="onProficientChange"
                 items="{path: 'proficiency>/' }"
                 placeholder="Please enter a value">
                 <core:Item id="itemProficient" key="{proficiency>ProficiencyId}" text="{proficiency>ProficiencyLevel}"/>
