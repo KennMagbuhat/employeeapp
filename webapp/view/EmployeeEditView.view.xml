@@ -42,7 +42,7 @@
                                             id="idComboCareerEdit"
                                             change="onCareerLvlChange"
                                             items="{path: '/CareerList' }"
-                                            placeholder="{CareerLevel}">
+                                            selectedKey="{CareerLevel}">
                                                 <core:Item id="itemCareerLvlEdit" key="{CareerId}" text="{CareerLevel}" />
                                         </ComboBox>
                                         <Label id="idLblCurrentPEdit" text="{i18n>currentProject}" required="true" />
@@ -50,8 +50,8 @@
                                             id="idComboCurrentPEdit"
                                             change="onProjListChange"
                                             items="{path: '/ProjectList' }"
-                                            placeholder="{CurrentProject}">
-                                                <core:Item id="itemProjectListEdit" key="{ProjectId}" text="{ProjectName}"/>
+                                            selectedKey="{CurrentProject}">
+                                                <core:Item id="itemProjectListEdit" key="{ProjectName}" text="{ProjectName}"/>
                                         </ComboBox>
                                 </f:content>
                             </form:SimpleForm> 
