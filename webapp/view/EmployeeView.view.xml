@@ -30,7 +30,7 @@
  
                     <IconTabFilter id="skillsTab" text="{i18n>skillsTab}">
                         <Title id="skillsTableTitleId" text="{i18n>skillsTab}" />
-                        <Table id="skillsTableEmpView" items="{to_Skills}">
+                        <Table id="skillsTableEmpView" items="{skillsTableModel>/skills}">
                             <columns>
                                 <Column id="colSkillsId">
                                     <Text id="txtHeaderSkillsId" text="{i18n>skillsCol}" />
@@ -42,8 +42,8 @@
                             <items>
                                 <ColumnListItem id="employeeSkillRow">
                                     <cells>
-                                        <Text id="skillDetEmpId" text="{SkillName}" />
-                                        <Text id="proficiencyDetEmpId" text="{Proficiency}" />
+                                        <Text id="skillDetEmpId" text="{skillsTableModel>SkillName}" />
+                                        <Text id="proficiencyDetEmpId" text="{skillsTableModel>ProficiencyLevel}" />
                                     </cells>
                                 </ColumnListItem>
                             </items>
